@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXComboBox?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="639.0" prefWidth="1054.0" styleClass="pane" stylesheets="@../stylesheet/stylesheet.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.palmoilfactory.controller.EmployeeDetailsFormController">
+   <children>
+      <ImageView fitHeight="639.0" fitWidth="1054.0" layoutY="-1.0" opacity="0.74" pickOnBounds="true" styleClass="imageView">
+         <image>
+            <Image url="@../img/employee-pane-img.jpg" />
+         </image>
+      </ImageView>
+      <Label layoutX="14.0" layoutY="14.0" prefHeight="47.0" prefWidth="204.0" text="Employee Details" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="24.0" />
+         </font>
+      </Label>
+      <Pane fx:id="empdetailsPane" layoutX="34.0" layoutY="76.0" opacity="0.9" prefHeight="303.0" prefWidth="986.0" styleClass="pane" stylesheets="@../stylesheet/stylesheet.css">
+         <children>
+            <JFXButton fx:id="btnAddEmployee" layoutX="57.0" layoutY="240.0" onAction="#btnAddEmployeeOnAction" prefHeight="30.0" prefWidth="176.0" styleClass="btnadd" text="Add Employee">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </JFXButton>
+            <JFXButton layoutX="605.0" layoutY="240.0" onAction="#btnClearOnAction" prefHeight="30.0" prefWidth="153.0" styleClass="btnclear" text="Clear">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </JFXButton>
+            <JFXButton layoutX="330.0" layoutY="240.0" onAction="#btnDeleteEmployeeOnAction" prefHeight="30.0" prefWidth="143.0" styleClass="btndelete" text="Delete Employee">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </JFXButton>
+            <Label layoutX="15.0" layoutY="9.0" prefHeight="35.0" prefWidth="193.0" text="Search Employee ID  :" textFill="WHITE">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Label>
+            <JFXTextField fx:id="txtEmployeeId" layoutX="217.0" layoutY="14.0" onAction="#txtEmployeeIdOnAction" prefHeight="25.0" prefWidth="204.0" promptText="employee id" styleClass="textfield" stylesheets="@../stylesheet/stylesheet.css" unFocusColor="WHITE" />
+            <Label layoutX="14.0" layoutY="68.0" prefHeight="31.0" prefWidth="225.0" text="Name with initials     :" textFill="WHITE">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Label>
+            <Label layoutX="17.0" layoutY="112.0" prefHeight="31.0" prefWidth="204.0" text="Address                   :" textFill="WHITE">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Label>
+            <Label layoutX="521.0" layoutY="24.0" prefHeight="31.0" prefWidth="115.0" text="Contact    :" textFill="WHITE">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Label>
+            <JFXButton layoutX="553.0" layoutY="26.0" visible="false" />
+            <JFXTextField fx:id="txtEmployeeAddress" layoutX="216.0" layoutY="115.0" onAction="#txtEmployeeAddressOnAction" prefHeight="25.0" prefWidth="204.0" styleClass="textfield" stylesheets="@../stylesheet/stylesheet.css" unFocusColor="WHITE" />
+            <JFXTextField fx:id="txtEmployeeName" layoutX="214.0" layoutY="71.0" onAction="#txtEmployeeNameOnAction" prefHeight="25.0" prefWidth="204.0" styleClass="textfield" stylesheets="@../stylesheet/stylesheet.css" unFocusColor="WHITE" />
+            <JFXTextField fx:id="txtEmployeeContact" layoutX="646.0" layoutY="26.0" onAction="#txtEmployeeContactOnAction" prefHeight="25.0" prefWidth="153.0" styleClass="textfield" stylesheets="@../stylesheet/stylesheet.css" unFocusColor="WHITE" />
+            <JFXButton layoutX="436.0" layoutY="9.0" onAction="#btnSearchEmployeeOnAction" prefHeight="35.0" prefWidth="37.0" text="Button" textFill="#322c2c">
+               <font>
+                  <Font size="1.0" />
+               </font>
+               <graphic>
+                  <ImageView fitHeight="31.0" fitWidth="37.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../img/search-human-img.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </JFXButton>
+            <Label layoutX="521.0" layoutY="81.0" prefHeight="31.0" prefWidth="115.0" text="Salary        :" textFill="WHITE">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Label>
+            <JFXTextField fx:id="txtEmployeeSalary" layoutX="646.0" layoutY="84.0" prefHeight="25.0" prefWidth="153.0" styleClass="textfield" stylesheets="@../stylesheet/stylesheet.css" unFocusColor="WHITE" />
+            <Label layoutX="17.0" layoutY="168.0" prefHeight="31.0" prefWidth="213.0" text="EMP Type               :" textFill="WHITE">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Label>
+            <Label layoutX="521.0" layoutY="168.0" prefHeight="31.0" prefWidth="115.0" text="Sch ID      :" textFill="WHITE">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Label>
+            <JFXComboBox fx:id="cmbEmployeetype" layoutX="216.0" layoutY="172.0" prefHeight="25.0" prefWidth="204.0" promptText="emp type" styleClass="cmb" stylesheets="@../stylesheet/stylesheet.css" unFocusColor="WHITE" />
+            <JFXComboBox fx:id="cmbEmployeeSchId" layoutX="646.0" layoutY="171.0" prefHeight="25.0" prefWidth="153.0" promptText="sch id" styleClass="cmb" stylesheets="@../stylesheet/stylesheet.css" unFocusColor="WHITE" />
+            <JFXButton layoutX="813.0" layoutY="170.0" maxWidth="143.0" onAction="#btnEditScheduleDetailsOnAction" prefHeight="30.0" prefWidth="143.0" styleClass="btnScheduleDetail" text="Schedule Details">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </JFXButton>
+            <JFXButton layoutX="843.0" layoutY="243.0" onAction="#btnGetReportOnAction" styleClass="btnGetReport" text="Get Report" />
+         </children>
+      </Pane>
+      <TableView fx:id="tblEmployeeDetails" layoutX="34.0" layoutY="401.0" prefHeight="211.0" prefWidth="986.0">
+         <columns>
+            <TableColumn fx:id="colEMPID" prefWidth="105.0" text="EMP ID" />
+            <TableColumn fx:id="colEMPName" prefWidth="179.0" text="EMP Name" />
+            <TableColumn fx:id="colEMPAddress" minWidth="0.0" prefWidth="144.0" text="EMP Address" />
+            <TableColumn fx:id="colEMPContact" prefWidth="133.0" text="EMP Contact" />
+            <TableColumn fx:id="colEMPSalary" prefWidth="115.0" text="EMP Salary" />
+            <TableColumn fx:id="colEMPType" prefWidth="86.0" text="EMP Type" />
+            <TableColumn fx:id="colSCHId" prefWidth="120.0" text="Sch ID" />
+            <TableColumn fx:id="colAction" prefWidth="102.0" text="Action" />
+         </columns>
+      </TableView>
+   </children>
+</AnchorPane>

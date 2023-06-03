@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXPasswordField?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="loginContext" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="532.0" prefWidth="750.0" style="-fx-background-color: #1F2127;" stylesheets="@../stylesheet/stylesheet.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.palmoilfactory.controller.LoginFormController">
+   <children>
+      <ImageView fitHeight="532.0" fitWidth="750.0" opacity="0.66" pickOnBounds="true" preserveRatio="true" styleClass="loginlabel">
+         <image>
+            <Image url="@../img/login-img.jpg" />
+         </image>
+      </ImageView>
+      <Pane layoutX="52.0" layoutY="57.0" opacity="0.85" prefHeight="423.0" prefWidth="320.0" style="-fx-background-color: #b2bec3; -fx-background-radius: 10;">
+         <children>
+            <JFXButton alignment="CENTER" buttonType="RAISED" contentDisplay="CENTER" layoutX="113.0" layoutY="319.0" onAction="#btnLoginOnAction" prefHeight="32.0" prefWidth="93.0" ripplerFill="WHITE" styleClass="btnLogin" text="Login" textAlignment="CENTER" textFill="WHITE" textOverrun="CENTER_ELLIPSIS">
+               <font>
+                  <Font name="System Bold" size="19.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </JFXButton>
+            <JFXPasswordField fx:id="txtPassword" layoutX="40.0" layoutY="231.0" onAction="#txtPasswordOnAction" prefHeight="30.0" prefWidth="239.0" promptText="password here" styleClass="loginFields" />
+            <JFXTextField fx:id="txtUsername" focusColor="WHITE" layoutX="40.0" layoutY="164.0" onAction="#txtUsernameOnAction" prefHeight="30.0" prefWidth="239.0" promptText="username here" styleClass="loginFields" stylesheets="@../stylesheet/stylesheet.css" />
+            <ImageView fitHeight="93.0" fitWidth="107.0" layoutX="112.0" layoutY="40.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../img/login-logo.jpg" />
+               </image>
+            </ImageView>
+         </children>
+      </Pane>
+      <Label layoutX="659.0" layoutY="493.0" opacity="0.8" styleClass="loginlabel" text="Version : 1.0.0" textFill="WHITE" />
+      <Label layoutX="377.0" layoutY="493.0" opacity="0.8" styleClass="loginlabel" text="Developed by : Dilshan Dekumpitiya" textFill="WHITE" />
+      <Separator layoutX="377.0" layoutY="485.0" opacity="0.8" prefHeight="3.0" prefWidth="356.0" style="-fx-background-color: white;" />
+      <Label layoutX="440.0" layoutY="33.0" opacity="0.78" styleClass="loginTitlelabel" text="AEN Palm Oil" />
+      <Label layoutX="390.0" layoutY="94.0" opacity="0.78" styleClass="loginTitlelabel" text="Processing (Pvt) Ltd" />
+   </children>
+</AnchorPane>

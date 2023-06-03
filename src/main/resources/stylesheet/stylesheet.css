@@ -1,0 +1,219 @@
+.btnclear{
+    -fx-background-color:  #d2dae2;
+    -fx-background-radius: 10;
+    -fx-min-width: 100px;
+    -fx-min-height: 30px;
+    -fx-max-width: 100px;
+    -fx-max-height: 30px;
+    -fx-opacity: 1;
+}
+.btnScheduleDetail{
+    -fx-background-color:  #10ac84;
+    -fx-background-radius: 10;
+    -fx-min-width: 130px;
+    -fx-min-height: 30px;
+    -fx-max-width: 130px;
+    -fx-max-height: 30px;
+    -fx-opacity: 1;
+}
+.btnadd{
+    -fx-background-color:  #5352ed;
+    -fx-background-radius: 10;
+    -fx-min-width: 150px;
+    -fx-min-height: 30px;
+    -fx-max-width: 150px;
+    -fx-max-height: 30px;
+    -fx-opacity: 1;
+}
+.btndelete{
+    -fx-background-color:  #e74c3c;
+    -fx-background-radius: 10;
+    -fx-min-width: 150px;
+    -fx-min-height: 30px;
+    -fx-max-width: 150px;
+    -fx-max-height: 30px;
+    -fx-opacity: 1;
+
+}
+.btnPlaceOrder{
+    -fx-background-color: #9b59b6;
+    -fx-background-radius: 10;
+    -fx-min-width: 100px;
+    -fx-min-height: 30px;
+    -fx-max-width: 100px;
+    -fx-max-height: 30px;
+    -fx-opacity: 1;
+}
+.btnGetReport{
+    -fx-background-color: #feca57;
+    -fx-background-radius: 10;
+    -fx-min-width: 100px;
+    -fx-min-height: 30px;
+    -fx-max-width: 100px;
+    -fx-max-height: 30px;
+    -fx-opacity: 1;
+}
+.btnLogin{
+    -fx-background-color:  #30336b;
+    -fx-background-radius: 10;
+    -fx-min-width: 90px;
+    -fx-min-height: 40px;
+    -fx-max-width: 90px;
+    -fx-max-height: 40px;
+}
+.anchorPane{
+    -fx-background-color:  #3d3d3d;
+    -fx-background-radius: 10;
+}
+.anchorPaneDashboard{
+    -fx-background-color:  #1B1464;   /*#1F2127*/
+}
+
+.dashboardTotalOilLable{
+    -fx-background-color:  #3d3d3d;
+    -fx-background-radius: 15;
+}
+.pane{
+    -fx-background-color:   #3d3d3d;
+    -fx-background-radius: 10;
+
+}
+
+.cmb{
+    -fx-prompt-text-fill: black;
+    -fx-text-fill: white;
+    -fx-background-color: white;
+}
+.imageView{
+    -fx-background-radius: 10;
+}
+
+.dashboardbtn{
+    -fx-background-color: #34495e; /*#34495e*/
+    -fx-background-radius: 10;
+    -fx-min-width: 250px;
+    -fx-min-height: 50px;
+    -fx-max-width: 250px;
+    -fx-max-height: 50px;
+}
+
+.textfield{
+    -fx-text-fill: white;
+    -fx-prompt-text-fill: white;
+}
+
+.label{
+    -fx-text-fill: white;
+    -fx-font-size: 20px;
+}
+
+.labeltimeDate{
+    -fx-text-fill: white;
+    -fx-font-size: 17px;
+}
+
+.loginlabel{
+    -fx-text-fill: white;
+    -fx-font-size: 12px;
+}
+.loginFields{
+    -fx-text-fill: black;
+    -fx-font-size: 12px;
+    -fx-font-weight: bold;
+}
+.loginTitlelabel{
+    -fx-text-fill: #130f40;
+    -fx-font-size: 35px;
+    -fx-font-weight: bold;
+}
+.dashboardleftsidepane{
+    -fx-background-color: #3d3d3d ; /*#1F2127*/
+    -fx-background-radius: 10;
+}
+
+/* Table Modify */
+
+.table-view {
+    -fx-background-color: rgb(70,70,70);
+    -fx-text-fill: black;
+    -fx-border-style: solid;
+    -fx-border-color: transparent;
+    -fx-border-insets: 0 1 1 0, 0 0 0 0;
+    -fx-border-width: 0.083333em, 0.083333em;
+}
+
+.table-view .column-header{
+    -fx-border-style: solid;
+    -fx-border-color: rgb(130, 130, 130);
+    /*-fx-border-radius: 5px;
+    -fx-background-radius: 5px;
+    -fx-border-insets: 0 1 1 0, 0 0 0 0;
+    -fx-border-width: 0.083333em, 0.083333em;*/
+}
+
+.table-view .column-header .label{
+    -fx-font-size: 14px;
+    -fx-text-fill: black;
+    -fx-alignment: CENTER;
+}
+
+.table-view .column-header-background {
+    -fx-background-radius: 5px;
+    -fx-font-family: "Calibri";
+    -fx-background-color:  rgb(50,50,50);
+
+}
+.table-view .table-column{
+    -fx-alignment: CENTER;
+}
+
+/*
+.table-row-cell{
+    -fx-background-color: -fx-table-cell-border-color, white;
+    -fx-background-insets: 0, 0 0 1 0;
+    -fx-padding: 0.0em;
+}
+.table-row-cell:odd{
+    -fx-background-color: -fx-table-cell-border-color, white;
+    -fx-background-insets: 0, 0 0 1 0;
+    -fx-padding: 0.0em;
+}
+
+.table-row-cell:selected {
+  -fx-background-color: #005797;
+    -fx-background-insets: 0;
+    -fx-background-radius: 1;
+}*/
+
+                          /* Bar Chart */
+
+/* Styling the chart legend */
+.chart-legend {
+    -fx-background-color: rgba(255, 255, 255, 0.5); /* Set background color to white with 50% opacity */
+/*rgba(255, 255, 255, 0.5)*/
+}
+
+/* Styling the chart title */
+.chart-legend . chart-title {
+    -fx-font-size: 20px;
+    -fx-font-weight: bold;
+    -fx-text-fill:black ;
+
+}
+
+/* Styling the chart axes */
+.chart-legend  . chart-axis {
+    -fx-font-size: 14px;
+    -fx-text-fill: black;
+}
+
+/* Styling the chart bars */
+.chart-legend .series0 {
+    -fx-bar-fill: #0066cc; /*!* Bar fill color for series 0 *!*/
+}
+
+.chart-legend .series1 {
+    -fx-bar-fill: #e84118; /*!* Bar fill color for series 1 *!*/
+}
+
+

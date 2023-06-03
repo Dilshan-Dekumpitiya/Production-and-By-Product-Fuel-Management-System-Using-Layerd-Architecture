@@ -1,0 +1,219 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.20.1.final using JasperReports Library version 6.20.1-7584acb244139816654f64e2fd57a00d3e31921e  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="steamDetailsReport" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="95dec25e-a7ec-4c55-8369-77e2f8214447">
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="Palm Oil Factory Data Adapter"/>
+	<queryString language="SQL">
+		<![CDATA[SELECT * FROM steam;]]>
+	</queryString>
+	<field name="stockId" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="stockId"/>
+		<property name="com.jaspersoft.studio.field.label" value="stockId"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="steam"/>
+	</field>
+	<field name="fruit" class="java.lang.Double">
+		<property name="com.jaspersoft.studio.field.name" value="fruit"/>
+		<property name="com.jaspersoft.studio.field.label" value="fruit"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="steam"/>
+	</field>
+	<field name="emptyBunch" class="java.lang.Double">
+		<property name="com.jaspersoft.studio.field.name" value="emptyBunch"/>
+		<property name="com.jaspersoft.studio.field.label" value="emptyBunch"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="steam"/>
+	</field>
+	<field name="date" class="java.sql.Date">
+		<property name="com.jaspersoft.studio.field.name" value="date"/>
+		<property name="com.jaspersoft.studio.field.label" value="date"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="steam"/>
+	</field>
+	<field name="time" class="java.sql.Time">
+		<property name="com.jaspersoft.studio.field.name" value="time"/>
+		<property name="com.jaspersoft.studio.field.label" value="time"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="steam"/>
+	</field>
+	<group name="stockId">
+		<groupExpression><![CDATA[$F{stockId}]]></groupExpression>
+	</group>
+	<group name="fruit">
+		<groupExpression><![CDATA[$F{fruit}]]></groupExpression>
+	</group>
+	<group name="emptyBunch">
+		<groupExpression><![CDATA[$F{emptyBunch}]]></groupExpression>
+	</group>
+	<group name="date">
+		<groupExpression><![CDATA[$F{date}]]></groupExpression>
+	</group>
+	<group name="time">
+		<groupExpression><![CDATA[$F{time}]]></groupExpression>
+	</group>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="92" splitType="Stretch">
+			<staticText>
+				<reportElement x="150" y="10" width="350" height="30" uuid="b9cb20dc-d837-4e16-a34f-870e6ce66bd4"/>
+				<textElement>
+					<font size="16" isBold="true"/>
+				</textElement>
+				<text><![CDATA[AEN PALM OIL PROCESSING (Pvt) Ltd]]></text>
+			</staticText>
+			<image>
+				<reportElement x="260" y="30" width="50" height="50" uuid="43c15fde-f47b-482e-98fc-69917ba4b235"/>
+				<imageExpression><![CDATA["E:/1.GDSE/1st Semester/9.My Final Project-1st Semester/AEN Palm Oil Factory Project/production-and-fuel-management-system/src/main/resources/img/login-logo.jpg"]]></imageExpression>
+			</image>
+			<line>
+				<reportElement x="0" y="80" width="560" height="1" uuid="91141217-3de8-41c6-b401-bf96553e7b72"/>
+			</line>
+			<textField pattern="MMMMM dd, yyyy">
+				<reportElement x="460" y="60" width="100" height="30" uuid="c4ce0c88-1e15-465b-9af2-294403c792bf"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<textField pattern="HH:mm">
+				<reportElement x="380" y="60" width="100" height="30" uuid="ca26f12c-0578-434d-b62f-fc9e8ff08af2"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="43" splitType="Stretch">
+			<staticText>
+				<reportElement x="200" y="2" width="170" height="30" uuid="c93fb24d-bbae-43af-a4b9-865c4a613b16"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<text><![CDATA[Steam Details Report]]></text>
+			</staticText>
+			<line>
+				<reportElement x="0" y="37" width="550" height="1" uuid="eeb02c70-2e1f-4939-a96c-a185a5c015a9"/>
+			</line>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="43" splitType="Stretch">
+			<staticText>
+				<reportElement x="30" y="10" width="100" height="30" uuid="299dc1f6-37be-44a4-863d-549d74fffbb9">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="199cc1a3-77d0-4f69-852e-f75428f8c9c4"/>
+				</reportElement>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Stock ID]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="100" y="10" width="100" height="30" uuid="9e243a0b-8c13-415e-a5a2-69d009be3cf8">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="544b10b5-61d3-4edd-b013-60edf00d65b4"/>
+				</reportElement>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Fruit Output (MT)]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="205" y="10" width="130" height="30" uuid="6ef91866-9102-42e1-a800-18795c0bbc22">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="9dca52ce-1a12-4fe1-ad3d-ccc4ce0f1a5c"/>
+				</reportElement>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Empty Bunch Output (MT)]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="360" y="10" width="100" height="30" uuid="54e29ce6-dee5-4dfb-81ff-5fda5c9fd1ad">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="249c3f9b-3d59-4a95-85dd-e2bbc8c67994"/>
+				</reportElement>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Stock Date]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="470" y="10" width="70" height="30" uuid="52102d3e-c2a5-48d9-8fd8-788017d9bd6d">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="0d30301f-7882-4751-846b-e645d3f350eb"/>
+				</reportElement>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Stock Time]]></text>
+			</staticText>
+			<line>
+				<reportElement x="0" y="38" width="552" height="1" uuid="a8bcfedd-a76c-45e9-b774-85733729df1e"/>
+			</line>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="46" splitType="Stretch">
+			<textField>
+				<reportElement x="30" y="10" width="100" height="30" uuid="75f888f5-b333-4bce-b7eb-6725edcc924e">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="199cc1a3-77d0-4f69-852e-f75428f8c9c4"/>
+				</reportElement>
+				<textFieldExpression><![CDATA[$F{stockId}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="96" y="10" width="99" height="30" uuid="5c6f5eec-4d40-47b0-bbec-58e3d6723436">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="544b10b5-61d3-4edd-b013-60edf00d65b4"/>
+				</reportElement>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{fruit}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="220" y="10" width="100" height="30" uuid="b27bdac5-7c0f-4c6d-8c7d-ec065ea0a718">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="9dca52ce-1a12-4fe1-ad3d-ccc4ce0f1a5c"/>
+				</reportElement>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{emptyBunch}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="340" y="10" width="100" height="30" uuid="c39c54b8-c40e-4b28-ace1-47c1d02cd5f0">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="249c3f9b-3d59-4a95-85dd-e2bbc8c67994"/>
+				</reportElement>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[new SimpleDateFormat("MM/dd/yyyy").format($F{date})]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="450" y="7" width="100" height="30" uuid="a23c61a1-55e5-4a42-b371-29da21cf7f2f">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="0d30301f-7882-4751-846b-e645d3f350eb"/>
+				</reportElement>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[new SimpleDateFormat("hh:mm:ss a").format($F{time})]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement x="0" y="40" width="552" height="1" uuid="5bf6dc21-f2b5-4960-8e08-e929ff880665"/>
+			</line>
+			<line>
+				<reportElement x="1" y="-49" width="1" height="89" uuid="068a5a8c-4f00-453a-8eb8-000dc968c490"/>
+			</line>
+			<line>
+				<reportElement x="93" y="-49" width="1" height="89" uuid="a1864dca-00de-457a-aeec-5ac84bdde93c"/>
+			</line>
+			<line>
+				<reportElement x="199" y="-49" width="1" height="89" uuid="c0320c25-3d9d-4687-97a7-b4dbe76e78e3"/>
+			</line>
+			<line>
+				<reportElement x="339" y="-49" width="1" height="89" uuid="77d13e59-204a-4209-a96d-761977a04174"/>
+			</line>
+			<line>
+				<reportElement x="441" y="-48" width="1" height="89" uuid="0d0336d3-d294-4119-a568-ea19ff18d206"/>
+			</line>
+			<line>
+				<reportElement x="551" y="-49" width="1" height="89" uuid="ba196344-3ddb-4a43-91a2-beb4b092ff5e"/>
+			</line>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch">
+			<staticText>
+				<reportElement x="460" y="10" width="100" height="30" uuid="8dcd756c-844e-42b8-86fd-82191d6b2baa"/>
+				<text><![CDATA[Generated by AEN Palm Oil Processing(Pvt) Ltd]]></text>
+			</staticText>
+		</band>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>

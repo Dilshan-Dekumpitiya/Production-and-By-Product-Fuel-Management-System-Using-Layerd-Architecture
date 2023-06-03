@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<Pane fx:id="scheduleDetailsPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" opacity="0.9" prefHeight="303.0" prefWidth="600.0" styleClass="pane" stylesheets="@../stylesheet/stylesheet.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.palmoilfactory.controller.ScheduleDetailsFormController">
+   <children>
+      <JFXButton layoutX="14.0" layoutY="14.0" onAction="#btnBackOnAction" prefHeight="30.0" prefWidth="79.0" styleClass="btnclear" text="Back">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </JFXButton>
+      <Label layoutX="63.0" layoutY="86.0" prefHeight="17.0" prefWidth="136.0" text="Schedule ID :" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="20.0" />
+         </font>
+      </Label>
+      <Label layoutX="63.0" layoutY="137.0" prefHeight="17.0" prefWidth="136.0" text="Time Range :" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="20.0" />
+         </font>
+      </Label>
+      <JFXComboBox fx:id="cmbSchId" layoutX="199.0" layoutY="89.0" onAction="#cmbSchIdOnAction" prefHeight="25.0" prefWidth="188.0" styleClass="cmb" unFocusColor="WHITE" />
+      <JFXComboBox fx:id="cmbTimeRange" layoutX="199.0" layoutY="137.0" onAction="#cmbTimeRange" prefHeight="25.0" prefWidth="188.0" styleClass="cmb" unFocusColor="WHITE" />
+   </children>
+</Pane>

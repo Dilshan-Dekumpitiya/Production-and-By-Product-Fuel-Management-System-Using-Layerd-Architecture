@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.chart.BarChart?>
+<?import javafx.scene.chart.CategoryAxis?>
+<?import javafx.scene.chart.NumberAxis?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="dashboardContext" minHeight="650.0" minWidth="1366.0" prefHeight="768.0" prefWidth="1366.0" styleClass="anchorPaneDashboard" stylesheets="@../stylesheet/stylesheet.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.palmoilfactory.controller.DashboardFormController">
+   <children>
+      <Label fx:id="lblDate" alignment="CENTER" contentDisplay="CENTER" graphicTextGap="0.0" layoutX="1242.0" layoutY="16.0" prefHeight="25.0" prefWidth="112.0" styleClass="labeltimeDate" text="label" textFill="#ffffffa8">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font></Label>
+      <Pane layoutX="14.0" layoutY="45.0" prefHeight="639.0" prefWidth="275.0" styleClass="dashboardleftsidepane" stylesheets="@../stylesheet/stylesheet.css">
+         <children>
+            <JFXButton alignment="TOP_LEFT" layoutX="13.0" layoutY="568.0" onAction="#btnLogoutOnAction" prefHeight="44.0" prefWidth="217.0" styleClass="dashboardbtn" stylesheets="@../stylesheet/stylesheet.css" text="Logout" textFill="WHITE">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+               <font>
+                  <Font name="Arial Rounded MT Bold" size="20.0" />
+               </font>
+            </JFXButton>
+            <JFXButton alignment="TOP_LEFT" layoutX="13.0" layoutY="88.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onAction="#btnSupplierDetailOnAction" prefHeight="44.0" prefWidth="217.0" styleClass="dashboardbtn" stylesheets="@../stylesheet/stylesheet.css" text="Supplier " textFill="WHITE">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+               <font>
+                  <Font name="Arial Rounded MT Bold" size="20.0" />
+               </font>
+            </JFXButton>
+            <JFXButton alignment="TOP_LEFT" layoutX="13.0" layoutY="157.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onAction="#btnStockDetailsOnAction" prefHeight="44.0" prefWidth="217.0" styleClass="dashboardbtn" stylesheets="@../stylesheet/stylesheet.css" text="Stock " textFill="WHITE">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+               <font>
+                  <Font name="Arial Rounded MT Bold" size="20.0" />
+               </font>
+            </JFXButton>
+            <JFXButton alignment="TOP_LEFT" layoutX="13.0" layoutY="364.0" onAction="#btnByProductFuelOnAction" prefHeight="44.0" prefWidth="204.0" styleClass="dashboardbtn" stylesheets="@../stylesheet/stylesheet.css" text="  By-Product Fuel " textFill="WHITE">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+               <font>
+                  <Font name="Arial Rounded MT Bold" size="20.0" />
+               </font>
+            </JFXButton>
+            <JFXButton alignment="TOP_LEFT" layoutX="13.0" layoutY="226.0" onAction="#btnSteamOnAction" prefHeight="44.0" prefWidth="217.0" styleClass="dashboardbtn" stylesheets="@../stylesheet/stylesheet.css" text="Steam " textFill="WHITE">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+               <font>
+                  <Font name="Arial Rounded MT Bold" size="20.0" />
+               </font>
+            </JFXButton>
+            <JFXButton alignment="TOP_LEFT" layoutX="13.0" layoutY="293.0" onAction="#btnOilProductionOnAction" prefHeight="44.0" prefWidth="185.0" styleClass="dashboardbtn" stylesheets="@../stylesheet/stylesheet.css" text="Oil Production" textFill="WHITE">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+               <font>
+                  <Font name="Arial Rounded MT Bold" size="20.0" />
+               </font>
+            </JFXButton>
+            <JFXButton alignment="TOP_LEFT" layoutX="13.0" layoutY="432.0" onAction="#btnEmployeeOnAction" prefHeight="44.0" prefWidth="217.0" styleClass="dashboardbtn" stylesheets="@../stylesheet/stylesheet.css" text="Employee" textFill="WHITE">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+               <font>
+                  <Font name="Arial Rounded MT Bold" size="20.0" />
+               </font>
+            </JFXButton>
+            <JFXButton alignment="TOP_LEFT" layoutX="13.0" layoutY="19.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onAction="#btnDashboardOnAction" prefHeight="44.0" prefWidth="217.0" styleClass="dashboardbtn" stylesheets="@../stylesheet/stylesheet.css" text="Dashboard" textFill="WHITE">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+               <font>
+                  <Font name="Arial Rounded MT Bold" size="20.0" />
+               </font>
+            </JFXButton>
+            <ImageView fitHeight="32.0" fitWidth="32.0" layoutX="201.0" layoutY="577.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../img/logout-img.gif" />
+               </image>
+            </ImageView>
+            <JFXButton alignment="TOP_LEFT" layoutX="13.0" layoutY="499.0" onAction="#btnOrderDetailsOnAction" prefHeight="44.0" prefWidth="217.0" styleClass="dashboardbtn" stylesheets="@../stylesheet/stylesheet.css" text="Order Details" textFill="WHITE">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+               <font>
+                  <Font name="Arial Rounded MT Bold" size="20.0" />
+               </font>
+            </JFXButton>
+            <ImageView fitHeight="32.0" fitWidth="32.0" layoutX="201.0" layoutY="499.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../img/orders-img.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="32.0" fitWidth="32.0" layoutX="201.0" layoutY="373.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../img/fuel-img.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="32.0" fitWidth="32.0" layoutX="201.0" layoutY="441.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../img/employee-img.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="32.0" fitWidth="32.0" layoutX="201.0" layoutY="28.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../img/dashboard-img.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="36.0" fitWidth="32.0" layoutX="201.0" layoutY="97.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../img/supplier-img.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="32.0" fitWidth="32.0" layoutX="201.0" layoutY="166.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../img/stock-img.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="32.0" fitWidth="32.0" layoutX="201.0" layoutY="235.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../img/steam-img.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="32.0" fitWidth="32.0" layoutX="201.0" layoutY="302.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../img/oil-production-img.png" />
+               </image>
+            </ImageView>
+         </children>
+      </Pane>
+      <AnchorPane fx:id="dashboardDetailsPane" layoutX="300.0" layoutY="47.0" prefHeight="639.0" prefWidth="1054.0" styleClass="pane">
+         <children>
+            <ImageView fitHeight="639.0" fitWidth="1054.0" opacity="0.36" pickOnBounds="true" styleClass="imageView">
+               <image>
+                  <Image url="@../img/dashboard-pane-img.jpg" />
+               </image>
+            </ImageView>
+            <Label layoutX="14.0" layoutY="14.0" prefHeight="32.0" prefWidth="217.0" text="Dashboard" textFill="WHITE">
+               <font>
+                  <Font size="25.0" />
+               </font>
+            </Label>
+            <Pane layoutX="527.0" layoutY="40.0" opacity="0.8" prefHeight="98.0" prefWidth="262.0" styleClass="dashboardTotalOilLable">
+               <children>
+                  <Label layoutX="14.0" layoutY="14.0" prefHeight="36.0" prefWidth="292.0" text="Total Oil Qty On Hand (kL)      " textFill="#f80303">
+                     <font>
+                        <Font size="20.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="lblTotalOilQtyOnHand" alignment="CENTER" contentDisplay="CENTER" layoutX="29.0" layoutY="46.0" prefHeight="36.0" prefWidth="204.0" style="-fx-text-fill: #8c7ae6; -fx-font-weight: bold;" text="aa" textAlignment="CENTER" textFill="#f80303">
+                     <font>
+                        <Font size="20.0" />
+                     </font>
+                  </Label>
+               </children>
+            </Pane>
+            <Label fx:id="lblGreeting" layoutX="82.0" layoutY="89.0" prefHeight="36.0" prefWidth="313.0" style="-fx-text-fill: #ED4C67; -fx-font-weight: bold;" text="time" />
+            <BarChart fx:id="barChartStockvsOilFuel" layoutX="12.0" layoutY="175.0" prefHeight="442.0" prefWidth="1030.0" styleClass="chart-legend" stylesheets="@../stylesheet/stylesheet.css" title="Stock Vs Oil Production and By-Product Fuel">
+              <xAxis>
+                <CategoryAxis side="BOTTOM" />
+              </xAxis>
+              <yAxis>
+                <NumberAxis side="LEFT" />
+              </yAxis>
+            </BarChart>
+         </children>
+      </AnchorPane>
+      <Label fx:id="lblTime" alignment="CENTER_RIGHT" contentDisplay="CENTER" graphicTextGap="0.0" layoutX="1119.0" layoutY="16.0" prefHeight="25.0" prefWidth="112.0" styleClass="labeltimeDate" text="label" textAlignment="RIGHT" textFill="#ffffffa8">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+      </Label>
+      <Separator layoutX="1242.0" layoutY="23.0" orientation="VERTICAL" prefHeight="13.0" prefWidth="6.0" />
+   </children>
+</AnchorPane>

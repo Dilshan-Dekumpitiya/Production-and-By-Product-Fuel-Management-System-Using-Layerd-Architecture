@@ -1,0 +1,217 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.20.1.final using JasperReports Library version 6.20.1-7584acb244139816654f64e2fd57a00d3e31921e  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="oilProductionDetailsReport" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="89290e01-88a8-4771-a7ea-1586e59f87b7">
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="Palm Oil Factory Data Adapter"/>
+	<queryString language="SQL">
+		<![CDATA[SELECT * FROM oilproduction;]]>
+	</queryString>
+	<field name="stockId" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="stockId"/>
+		<property name="com.jaspersoft.studio.field.label" value="stockId"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="oilproduction"/>
+	</field>
+	<field name="totalEBLiquid" class="java.lang.Double">
+		<property name="com.jaspersoft.studio.field.name" value="totalEBLiquid"/>
+		<property name="com.jaspersoft.studio.field.label" value="totalEBLiquid"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="oilproduction"/>
+	</field>
+	<field name="totalPressLiquid" class="java.lang.Double">
+		<property name="com.jaspersoft.studio.field.name" value="totalPressLiquid"/>
+		<property name="com.jaspersoft.studio.field.label" value="totalPressLiquid"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="oilproduction"/>
+	</field>
+	<field name="date" class="java.sql.Date">
+		<property name="com.jaspersoft.studio.field.name" value="date"/>
+		<property name="com.jaspersoft.studio.field.label" value="date"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="oilproduction"/>
+	</field>
+	<field name="time" class="java.sql.Time">
+		<property name="com.jaspersoft.studio.field.name" value="time"/>
+		<property name="com.jaspersoft.studio.field.label" value="time"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="oilproduction"/>
+	</field>
+	<group name="stockId">
+		<groupExpression><![CDATA[$F{stockId}]]></groupExpression>
+	</group>
+	<group name="totalEBLiquid">
+		<groupExpression><![CDATA[$F{totalEBLiquid}]]></groupExpression>
+	</group>
+	<group name="totalPressLiquid">
+		<groupExpression><![CDATA[$F{totalPressLiquid}]]></groupExpression>
+	</group>
+	<group name="date">
+		<groupExpression><![CDATA[$F{date}]]></groupExpression>
+	</group>
+	<group name="time">
+		<groupExpression><![CDATA[$F{time}]]></groupExpression>
+	</group>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="100" splitType="Stretch">
+			<staticText>
+				<reportElement x="150" y="10" width="350" height="30" uuid="347fa181-859c-4595-b391-0eb77dd35e06"/>
+				<textElement>
+					<font size="16" isBold="true"/>
+				</textElement>
+				<text><![CDATA[AEN PALM OIL PROCESSING (Pvt) Ltd]]></text>
+			</staticText>
+			<image>
+				<reportElement x="240" y="40" width="50" height="50" uuid="f5693093-8406-4f3b-a392-24533fa252c6"/>
+				<imageExpression><![CDATA["E:/1.GDSE/1st Semester/9.My Final Project-1st Semester/AEN Palm Oil Factory Project/production-and-fuel-management-system/src/main/resources/img/login-logo.jpg"]]></imageExpression>
+			</image>
+			<textField pattern="MMMMM dd, yyyy">
+				<reportElement x="460" y="79" width="100" height="20" uuid="437d298e-1eb6-4323-a81d-9f7883138dac"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<textField pattern="HH:mm">
+				<reportElement x="418" y="79" width="100" height="20" uuid="2832dc0d-51d1-470e-ae4a-140b76efeff7"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="41" splitType="Stretch">
+			<line>
+				<reportElement x="-3" y="0" width="560" height="1" uuid="900f5002-da59-4d29-b1ba-7a7eb95c5670"/>
+			</line>
+			<staticText>
+				<reportElement x="190" y="10" width="170" height="30" uuid="27ee3172-e3f6-4085-8d2b-5e728aa7efd9"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<text><![CDATA[Oil Production Details Report]]></text>
+			</staticText>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="45" splitType="Stretch">
+			<staticText>
+				<reportElement x="20" y="10" width="100" height="20" uuid="baf43dfc-a3fe-4c18-b6e7-cd65238d07f5">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="2fa319a9-3a4d-4160-a9b5-c57bb61a7b3e"/>
+				</reportElement>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Stock ID]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="100" y="11" width="100" height="20" uuid="55bde8cb-e855-4f5c-a36f-01c83616edcf">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="91639480-8440-4039-b971-bd869e131f1a"/>
+				</reportElement>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Total EB Liquid (kL)]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="210" y="10" width="120" height="20" uuid="0339f746-8477-48e2-a801-c13f574ace14">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="f9445fef-832f-40ee-aecc-5710600f0c58"/>
+				</reportElement>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Total Press Liquid (kL)]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="340" y="10" width="100" height="20" uuid="bc7625ba-4700-4d9c-b5c8-7c8b46730616">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="b9b77916-1ea3-4117-8bfb-2f79e445e8be"/>
+				</reportElement>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Stock Date]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="440" y="10" width="100" height="17" uuid="07399a01-8069-49ce-94bd-882919832087">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="6691e24e-651f-4d84-b5c1-856b4c7e70bd"/>
+				</reportElement>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Stock Time]]></text>
+			</staticText>
+			<line>
+				<reportElement x="0" y="0" width="520" height="1" uuid="c26b02d8-a78f-4b53-a4aa-564a8eacdd8f"/>
+			</line>
+			<line>
+				<reportElement x="1" y="42" width="519" height="1" uuid="d2ae033f-81b7-451a-b430-48add6440780"/>
+			</line>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="41" splitType="Stretch">
+			<textField>
+				<reportElement x="20" y="4" width="100" height="30" uuid="e620fa9f-a488-49c0-8824-34c34fab8e96">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="2fa319a9-3a4d-4160-a9b5-c57bb61a7b3e"/>
+				</reportElement>
+				<textFieldExpression><![CDATA[$F{stockId}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="100" y="4" width="100" height="30" uuid="8e4fbd53-c474-4728-b876-74e77c5485b0">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="91639480-8440-4039-b971-bd869e131f1a"/>
+				</reportElement>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{totalEBLiquid}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="340" y="4" width="93" height="16" uuid="a7d603ec-7823-4592-bb17-90a55d8a79db">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="b9b77916-1ea3-4117-8bfb-2f79e445e8be"/>
+				</reportElement>
+				<textFieldExpression><![CDATA[new SimpleDateFormat("MM/dd/yyyy").format($F{date})]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="437" y="4" width="103" height="23" uuid="0b93f531-1d05-4491-8cff-dedaa86289a1">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="6691e24e-651f-4d84-b5c1-856b4c7e70bd"/>
+				</reportElement>
+				<textFieldExpression><![CDATA[new SimpleDateFormat("hh:mm:ss a").format($F{time})]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement x="0" y="-46" width="1" height="80" uuid="02feb130-b79a-4dd7-a3ea-8c90780c7baa"/>
+			</line>
+			<line>
+				<reportElement x="0" y="34" width="520" height="1" uuid="22124aa5-9d8d-48e0-8a23-f6710f682b21"/>
+			</line>
+			<line>
+				<reportElement x="85" y="-44" width="1" height="78" uuid="946e59c0-fa55-43e2-baa9-bb905ee90263"/>
+			</line>
+			<line>
+				<reportElement x="203" y="-45" width="1" height="80" uuid="c40a1bbe-d114-43fc-85b8-3659188825b5"/>
+			</line>
+			<line>
+				<reportElement x="329" y="-46" width="1" height="80" uuid="17b28278-4961-4437-acf1-9f5a31751dd6"/>
+			</line>
+			<line>
+				<reportElement x="418" y="-45" width="1" height="80" uuid="d50178a7-33c8-4a7f-85cc-4595b2a7f84c"/>
+			</line>
+			<line>
+				<reportElement x="520" y="-45" width="1" height="80" uuid="1d626768-5d72-4958-acab-797a43904130"/>
+			</line>
+			<textField>
+				<reportElement x="220" y="5" width="100" height="30" uuid="68c5b7d2-8064-4d1e-8d79-1134223b13aa">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="8bb17be4-c816-49c3-89bc-e155f05117ef"/>
+				</reportElement>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{totalPressLiquid}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch">
+			<staticText>
+				<reportElement x="460" y="10" width="100" height="30" uuid="b3732de9-4189-44f3-8ca3-1187fd3f12f5"/>
+				<text><![CDATA[Generated by AEN Palm Oil Processing(Pvt) Ltd]]></text>
+			</staticText>
+		</band>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>
