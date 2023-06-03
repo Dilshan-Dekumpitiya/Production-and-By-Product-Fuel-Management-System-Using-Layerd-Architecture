@@ -11,7 +11,7 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import lk.ijse.palmoilfactory.db.DBConnection;
 import lk.ijse.palmoilfactory.entity.Orders;
-import lk.ijse.palmoilfactory.entity.tm.OrderTM;
+import lk.ijse.palmoilfactory.dto.tm.OrderTM;
 import lk.ijse.palmoilfactory.model.OilProductionModel;
 import lk.ijse.palmoilfactory.model.OrderModel;
 import net.sf.jasperreports.engine.*;

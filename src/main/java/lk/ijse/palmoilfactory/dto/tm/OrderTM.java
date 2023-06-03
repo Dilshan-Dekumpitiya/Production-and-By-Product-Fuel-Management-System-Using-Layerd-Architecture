@@ -1,4 +1,4 @@
-package lk.ijse.palmoilfactory.entity.tm;
+package lk.ijse.palmoilfactory.dto.tm;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

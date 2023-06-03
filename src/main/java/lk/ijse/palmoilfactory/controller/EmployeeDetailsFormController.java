@@ -20,7 +20,7 @@ import javafx.scene.layout.Pane;
 import javafx.util.Duration;
 import lk.ijse.palmoilfactory.db.DBConnection;
 import lk.ijse.palmoilfactory.entity.Employee;
-import lk.ijse.palmoilfactory.entity.tm.EmployeeTM;
+import lk.ijse.palmoilfactory.dto.tm.EmployeeTM;
 import lk.ijse.palmoilfactory.model.EmployeeModel;
 import lk.ijse.palmoilfactory.util.Regex;
 import net.sf.jasperreports.engine.*;

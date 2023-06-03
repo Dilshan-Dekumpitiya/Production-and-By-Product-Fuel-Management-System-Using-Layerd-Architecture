@@ -19,7 +19,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.util.Duration;
 import lk.ijse.palmoilfactory.db.DBConnection;
 import lk.ijse.palmoilfactory.entity.Stock;
-import lk.ijse.palmoilfactory.entity.tm.StockTM;
+import lk.ijse.palmoilfactory.dto.tm.StockTM;
 import lk.ijse.palmoilfactory.model.OilProductionModel;
 import lk.ijse.palmoilfactory.model.StockModel;
 import lk.ijse.palmoilfactory.model.SupplierModel;

@@ -14,7 +14,7 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import lk.ijse.palmoilfactory.db.DBConnection;
 import lk.ijse.palmoilfactory.entity.Supplier;
-import lk.ijse.palmoilfactory.entity.tm.SupplierTM;
+import lk.ijse.palmoilfactory.dto.tm.SupplierTM;
 import lk.ijse.palmoilfactory.model.SupplierModel;
 import lk.ijse.palmoilfactory.util.Regex;
 import net.sf.jasperreports.engine.*;
