@@ -1,9 +1,7 @@
-package lk.ijse.palmoilfactory.dto;
+package lk.ijse.palmoilfactory.entity;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
-
-import java.util.Date;
 
 @Data
 @AllArgsConstructor

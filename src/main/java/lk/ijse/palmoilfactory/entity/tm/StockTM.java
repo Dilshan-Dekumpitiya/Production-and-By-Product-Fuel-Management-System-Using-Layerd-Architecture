@@ -1,4 +1,4 @@
-package lk.ijse.palmoilfactory.dto.tm;
+package lk.ijse.palmoilfactory.entity.tm;
 
 import com.jfoenix.controls.JFXButton;
 import lombok.AllArgsConstructor;

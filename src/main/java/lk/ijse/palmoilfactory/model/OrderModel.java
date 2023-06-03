@@ -1,13 +1,12 @@
 package lk.ijse.palmoilfactory.model;
 
 import lk.ijse.palmoilfactory.db.DBConnection;
-import lk.ijse.palmoilfactory.dto.Orders;
+import lk.ijse.palmoilfactory.entity.Orders;
 import lk.ijse.palmoilfactory.util.CrudUtil;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 

@@ -1,18 +1,16 @@
-package lk.ijse.palmoilfactory.dto.tm;
+package lk.ijse.palmoilfactory.entity;
 
-import com.jfoenix.controls.JFXButton;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 
 @Data
 @AllArgsConstructor
-public class EmployeeTM {
+public class Employee {
     private String empId;
     private String empName;
     private String empAddress;
     private String empContact;
-    private Double empSalary;
+    private double empSalary;
     private String empType;
-    private String schId;
-    private JFXButton btn;
+    private String empSchId;
 }

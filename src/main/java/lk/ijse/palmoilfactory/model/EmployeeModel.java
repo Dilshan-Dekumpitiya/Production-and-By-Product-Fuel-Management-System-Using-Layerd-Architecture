@@ -1,8 +1,6 @@
 package lk.ijse.palmoilfactory.model;
 
-import lk.ijse.palmoilfactory.dto.Employee;
-import lk.ijse.palmoilfactory.dto.Stock;
-import lk.ijse.palmoilfactory.dto.Supplier;
+import lk.ijse.palmoilfactory.entity.Employee;
 import lk.ijse.palmoilfactory.util.CrudUtil;
 
 import java.sql.ResultSet;

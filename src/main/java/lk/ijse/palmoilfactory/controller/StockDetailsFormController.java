@@ -18,10 +18,8 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.util.Duration;
 import lk.ijse.palmoilfactory.db.DBConnection;
-import lk.ijse.palmoilfactory.dto.Stock;
-import lk.ijse.palmoilfactory.dto.Supplier;
-import lk.ijse.palmoilfactory.dto.tm.StockTM;
-import lk.ijse.palmoilfactory.dto.tm.SupplierTM;
+import lk.ijse.palmoilfactory.entity.Stock;
+import lk.ijse.palmoilfactory.entity.tm.StockTM;
 import lk.ijse.palmoilfactory.model.OilProductionModel;
 import lk.ijse.palmoilfactory.model.StockModel;
 import lk.ijse.palmoilfactory.model.SupplierModel;
@@ -39,13 +37,8 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
-import java.util.Locale;
 import java.util.Optional;
 import java.util.ResourceBundle;
-
-import static java.time.LocalDateTime.*;
-import static java.time.format.DateTimeFormatter.*;
-import static lk.ijse.palmoilfactory.controller.OilProductionFormController.getTotalOilQtyOnAllStockIDs;
 
 public class StockDetailsFormController implements Initializable {
     @FXML

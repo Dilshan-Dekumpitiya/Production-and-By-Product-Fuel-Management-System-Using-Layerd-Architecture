@@ -1,9 +1,6 @@
 package lk.ijse.palmoilfactory.model;
 
-import javafx.event.ActionEvent;
-import javafx.fxml.FXML;
-import lk.ijse.palmoilfactory.db.DBConnection;
-import lk.ijse.palmoilfactory.dto.Supplier;
+import lk.ijse.palmoilfactory.entity.Supplier;
 import lk.ijse.palmoilfactory.util.CrudUtil;
 
 import java.sql.*;

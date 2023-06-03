@@ -1,4 +1,4 @@
-package lk.ijse.palmoilfactory.dto;
+package lk.ijse.palmoilfactory.entity;
 
 import lombok.*;
 
