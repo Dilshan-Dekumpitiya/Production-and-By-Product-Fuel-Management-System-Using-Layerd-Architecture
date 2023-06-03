@@ -106,7 +106,7 @@ public class SteamDetailsFormController implements Initializable {
     void btnGetReportOnAction(ActionEvent event) {
         Thread t1=new Thread(
                 () -> {
-                    String reportPath = "E:\\1.GDSE\\1st Semester\\9.My Final Project-1st Semester\\AEN Palm Oil Factory Project\\production-and-fuel-management-system\\src\\main\\resources\\reports\\steamDetailsReport.jrxml";
+                    String reportPath = "E:\\1.GDSE\\2nd Semester\\1.Design Pattern and Layerd Architecture\\AEN Palm Oil Factory Project using Layerd Architecture\\production-and-fuel-management-system-using-layerd-architecture\\src\\main\\resources\\reports\\steamDetailsReport.jrxml";
                     String sql="select * from steam";
                     String path = FileSystems.getDefault().getPath("/reports/steamDetailsReport.jrxml").toAbsolutePath().toString();
                     JasperDesign jasdi = null;

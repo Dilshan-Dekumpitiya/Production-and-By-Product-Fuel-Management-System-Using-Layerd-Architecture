@@ -65,7 +65,7 @@
 			</line>
 			<image>
 				<reportElement x="270" y="40" width="50" height="40" uuid="58703d13-badb-411f-bde4-47195c5e3082"/>
-				<imageExpression><![CDATA["E:/1.GDSE/1st Semester/9.My Final Project-1st Semester/AEN Palm Oil Factory Project/production-and-fuel-management-system/src/main/resources/img/login-logo.jpg"]]></imageExpression>
+				<imageExpression><![CDATA["E:/1.GDSE/2nd Semester/1.Design Pattern and Layerd Architecture/AEN Palm Oil Factory Project using Layerd Architecture/production-and-fuel-management-system-using-layerd-architecture/src/main/resources/img/login-logo.jpg"]]></imageExpression>
 			</image>
 		</band>
 	</title>

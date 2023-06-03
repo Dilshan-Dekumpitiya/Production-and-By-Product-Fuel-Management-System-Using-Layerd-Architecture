@@ -68,7 +68,7 @@
 			</staticText>
 			<image>
 				<reportElement x="252" y="30" width="50" height="40" uuid="54c73afe-7eb1-4efe-89e2-760c988095cd"/>
-				<imageExpression><![CDATA["E:/1.GDSE/1st Semester/9.My Final Project-1st Semester/AEN Palm Oil Factory Project/production-and-fuel-management-system/src/main/resources/img/login-logo.jpg"]]></imageExpression>
+				<imageExpression><![CDATA["E:/1.GDSE/2nd Semester/1.Design Pattern and Layerd Architecture/AEN Palm Oil Factory Project using Layerd Architecture/production-and-fuel-management-system-using-layerd-architecture/src/main/resources/img/login-logo.jpg"]]></imageExpression>
 			</image>
 			<textField pattern="MMMMM dd, yyyy">
 				<reportElement x="457" y="63" width="100" height="17" uuid="de8c9a99-8364-4484-8b54-592ec01d7d2d"/>
