@@ -11,7 +11,6 @@ import javafx.scene.control.Alert;
 import lk.ijse.palmoilfactory.db.DBConnection;
 import lk.ijse.palmoilfactory.model.SteamModel;
 import lk.ijse.palmoilfactory.model.StockModel;
-import lk.ijse.palmoilfactory.model.SupplierModel;
 import net.sf.jasperreports.engine.*;
 import net.sf.jasperreports.engine.design.JRDesignQuery;
 import net.sf.jasperreports.engine.design.JasperDesign;
@@ -20,7 +19,6 @@ import net.sf.jasperreports.view.JasperViewer;
 
 import java.net.URL;
 import java.nio.file.FileSystems;
-import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Collections;
 import java.util.List;

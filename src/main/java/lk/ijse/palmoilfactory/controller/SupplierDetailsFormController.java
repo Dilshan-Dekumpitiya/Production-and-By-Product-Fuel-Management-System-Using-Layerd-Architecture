@@ -16,9 +16,7 @@ import lk.ijse.palmoilfactory.bo.BOFactory;
 import lk.ijse.palmoilfactory.bo.custom.SupplierBO;
 import lk.ijse.palmoilfactory.db.DBConnection;
 import lk.ijse.palmoilfactory.dto.SupplierDTO;
-import lk.ijse.palmoilfactory.entity.Supplier;
 import lk.ijse.palmoilfactory.dto.tm.SupplierTM;
-import lk.ijse.palmoilfactory.model.SupplierModel;
 import lk.ijse.palmoilfactory.util.Regex;
 import net.sf.jasperreports.engine.*;
 import net.sf.jasperreports.engine.design.JRDesignQuery;
@@ -30,7 +28,6 @@ import java.net.URL;
 import java.nio.file.FileSystems;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.List;
 import java.util.Optional;
 import java.util.ResourceBundle;
 
@@ -225,8 +222,8 @@ public class SupplierDetailsFormController implements Initializable {
                             getAllSupplierToTable(searchText);
 
                         } else {
-                            System.out.println("Hello");
-
+                         //   System.out.println("Hello");
+                            System.out.println(event);
                             //new Alert(Alert.AlertType.WARNING, "Supplier Not Updated Please Try Again").show();
                         }
                     } catch (SQLException e) {

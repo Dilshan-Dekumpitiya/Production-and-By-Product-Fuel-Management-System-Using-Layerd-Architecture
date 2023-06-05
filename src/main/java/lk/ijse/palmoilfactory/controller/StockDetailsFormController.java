@@ -24,7 +24,6 @@ import lk.ijse.palmoilfactory.entity.Stock;
 import lk.ijse.palmoilfactory.dto.tm.StockTM;
 import lk.ijse.palmoilfactory.model.OilProductionModel;
 import lk.ijse.palmoilfactory.model.StockModel;
-import lk.ijse.palmoilfactory.model.SupplierModel;
 import lk.ijse.palmoilfactory.util.Regex;
 import net.sf.jasperreports.engine.*;
 import net.sf.jasperreports.engine.design.JRDesignQuery;

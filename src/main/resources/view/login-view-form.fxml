@@ -29,8 +29,8 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </JFXButton>
-            <JFXPasswordField fx:id="txtPassword" layoutX="40.0" layoutY="231.0" onAction="#txtPasswordOnAction" prefHeight="30.0" prefWidth="239.0" promptText="password here" styleClass="loginFields" />
-            <JFXTextField fx:id="txtUsername" focusColor="WHITE" layoutX="40.0" layoutY="164.0" onAction="#txtUsernameOnAction" prefHeight="30.0" prefWidth="239.0" promptText="username here" styleClass="loginFields" stylesheets="@../stylesheet/stylesheet.css" />
+            <JFXPasswordField fx:id="txtPassword" labelFloat="true" layoutX="40.0" layoutY="231.0" onAction="#txtPasswordOnAction" prefHeight="30.0" prefWidth="239.0" promptText="password here" styleClass="loginFields" />
+            <JFXTextField fx:id="txtUsername" focusColor="WHITE" labelFloat="true" layoutX="40.0" layoutY="164.0" onAction="#txtUsernameOnAction" prefHeight="30.0" prefWidth="239.0" promptText="username here" styleClass="loginFields" stylesheets="@../stylesheet/stylesheet.css" />
             <ImageView fitHeight="93.0" fitWidth="107.0" layoutX="112.0" layoutY="40.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../img/login-logo.jpg" />
