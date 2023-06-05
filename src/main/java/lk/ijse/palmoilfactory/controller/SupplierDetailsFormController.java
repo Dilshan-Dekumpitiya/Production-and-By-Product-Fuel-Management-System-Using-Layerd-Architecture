@@ -253,8 +253,8 @@ public class SupplierDetailsFormController implements Initializable {
                             //new Alert(Alert.AlertType.WARNING, "Supplier Not Updated Please Try Again").show();
                     //    }
                     } catch (ClassNotFoundException | SQLException e) {
-                        System.out.println(event);
-                       // new Alert(Alert.AlertType.ERROR, "OOPSSS!! something happened!!!").show();
+                        //System.out.println(event);
+                       new Alert(Alert.AlertType.ERROR, "OOPSSS!! something happened!!!").show();
                     }
                 }
             }
