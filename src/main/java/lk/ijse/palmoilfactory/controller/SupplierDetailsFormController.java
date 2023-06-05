@@ -81,11 +81,29 @@ public class SupplierDetailsFormController implements Initializable {
         setCellValueFactory(); //To show table data
         getAllSupplierToTable(searchText); //To get all supplier details to table(Not show)
 
-        tblSupplier.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> { //Add ActionListener to selected column and display text field values
+        /*tblSupplier.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> { //Add ActionListener to selected column and display text field values
             //Check select value is not null
             if(null!=newValue) { //newValue!=null --> Get more time to compare (newValue object compare)
                 btnSaveSupplier.setText("Update Supplier");
                 setDataToTextFields(newValue); //Set data to text field of selected row data of table
+            }
+        });*/
+
+        tblSupplier.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
+          //  btnDelete.setDisable(newValue == null);
+            btnSaveSupplier.setText(newValue != null ? "Update" : "Save");
+            btnSaveSupplier.setDisable(newValue == null);
+
+            if (newValue != null) {
+                /*txtCustomerId.setText(newValue.getId());
+                txtCustomerName.setText(newValue.getName());
+                txtCustomerAddress.setText(newValue.getAddress());
+
+                txtCustomerId.setDisable(false);
+                txtCustomerName.setDisable(false);
+                txtCustomerAddress.setDisable(false);*/
+
+                setDataToTextFields(newValue);
             }
         });
 
@@ -212,24 +230,29 @@ public class SupplierDetailsFormController implements Initializable {
                 if(txtSupplierId.getText().isEmpty() || txtSupplierName.getText().isEmpty() || txtSupplierAddress.getText().isEmpty() || txtSupplierContact.getText().isEmpty()){
                     new Alert(Alert.AlertType.CONFIRMATION,"Please Input Supplier ID and Search Supplier is exist").show();
                 }else {
-                    boolean isUpdated;
+                   // boolean isUpdated;
                     try {
-                        isUpdated = supplierBO.updateSupplier(new SupplierDTO(supName, supAddress, supContact,supId));
-                        if (isUpdated) {
-                            tblSupplier.getItems().clear();
-                            new Alert(Alert.AlertType.CONFIRMATION, "Supplier Updated").show();
-                            clearFields();
-                            getAllSupplierToTable(searchText);
+                        supplierBO.updateSupplier(new SupplierDTO(
+                                supId, supName, supAddress, supContact
+                        ));
 
-                        } else {
+                        tblSupplier.getItems().clear();
+                        clearFields();
+                        getAllSupplierToTable(searchText);
+                        new Alert(Alert.AlertType.CONFIRMATION, "Supplier Updated").show();
+                       // isUpdated = supplierBO.updateSupplier(new SupplierDTO(supName, supAddress, supContact,supId));
+                       // if (isUpdated) {
+                       //     tblSupplier.getItems().clear();
+                        //    new Alert(Alert.AlertType.CONFIRMATION, "Supplier Updated").show();
+                        //    clearFields();
+                        //    getAllSupplierToTable(searchText);
+
+                      //  } else {
                          //   System.out.println("Hello");
-                            System.out.println(event);
+                       //     System.out.println(event);
                             //new Alert(Alert.AlertType.WARNING, "Supplier Not Updated Please Try Again").show();
-                        }
-                    } catch (SQLException e) {
-                        System.out.println(event);
-                        //new Alert(Alert.AlertType.ERROR, "OOPSSS!! something happened!!!").show();
-                    } catch (ClassNotFoundException e) {
+                    //    }
+                    } catch (ClassNotFoundException | SQLException e) {
                         System.out.println(event);
                        // new Alert(Alert.AlertType.ERROR, "OOPSSS!! something happened!!!").show();
                     }
