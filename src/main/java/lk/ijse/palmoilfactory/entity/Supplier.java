@@ -4,7 +4,7 @@ import lombok.*;
 
 @Data
 @AllArgsConstructor
-public class Supplier {
+public class Supplier implements SuperEntity{
     private String supId;
     private String supName;
     private String supAddress;

@@ -1,6 +1,6 @@
 package lk.ijse.palmoilfactory.model;
 
-import lk.ijse.palmoilfactory.util.CrudUtil;
+import lk.ijse.palmoilfactory.dao.SQLUtil;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -12,7 +12,7 @@ public class OilProductionModel {
     public static String getUpdatedOilqty() throws SQLException, ClassNotFoundException {
 
         String sql="SELECT totalQty from totaloilqty";
-        ResultSet resultSet= CrudUtil.execute(sql);
+        ResultSet resultSet= SQLUtil.execute(sql);
 
         if(resultSet.next()) {
             return (resultSet.getString(1));
@@ -24,7 +24,7 @@ public class OilProductionModel {
 
         String sql = "UPDATE totaloilqty SET totalQty = (totalQty - ?) ";
 
-        return CrudUtil.execute(sql,qty);
+        return SQLUtil.execute(sql,qty);
 
     }
 
@@ -32,14 +32,14 @@ public class OilProductionModel {
 
         String sql = "UPDATE totaloilqty SET totalQty = (totalQty - ?) ";
 
-         CrudUtil.execute(sql,qty);
+        SQLUtil.execute(sql,qty);
 
     }
 
     public static void addOilQtyTototalOil(double qty) throws SQLException, ClassNotFoundException {
         String sql = "UPDATE totaloilqty SET totalQty = (totalQty + ?) ";
 
-        CrudUtil.execute(sql,qty);
+        SQLUtil.execute(sql,qty);
     }
 
     public static String getTotalOileveryStock(String stockId) throws SQLException, ClassNotFoundException {
@@ -72,7 +72,7 @@ public class OilProductionModel {
     public static boolean addOilProduction(String stockId, double totalEBLiquid, double totalPressLiquid, String date, String time) throws SQLException, ClassNotFoundException {
         String sql="INSERT INTO oilproduction(stockId,totalEBLiquid,totalPressLiquid,date,time) VALUES(?,?,?,?,?)";
 
-        return CrudUtil.execute(sql,stockId,totalEBLiquid,totalPressLiquid,date,time);
+        return SQLUtil.execute(sql,stockId,totalEBLiquid,totalPressLiquid,date,time);
 
 
     }

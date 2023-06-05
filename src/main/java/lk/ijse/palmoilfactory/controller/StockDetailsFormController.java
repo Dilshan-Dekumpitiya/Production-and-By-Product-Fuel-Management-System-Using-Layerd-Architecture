@@ -17,6 +17,8 @@ import javafx.scene.Cursor;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.util.Duration;
+import lk.ijse.palmoilfactory.bo.BOFactory;
+import lk.ijse.palmoilfactory.bo.custom.SupplierBO;
 import lk.ijse.palmoilfactory.db.DBConnection;
 import lk.ijse.palmoilfactory.entity.Stock;
 import lk.ijse.palmoilfactory.dto.tm.StockTM;
@@ -36,6 +38,7 @@ import java.sql.SQLException;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import java.util.ResourceBundle;
@@ -85,6 +88,8 @@ public class StockDetailsFormController implements Initializable {
     private JFXButton btnAddStock;
 
     private ObservableList<StockTM> obList = FXCollections.observableArrayList();
+
+    private SupplierBO supplierBO= BOFactory.getInstance().getBO(BOFactory.BOTypes.SUPPLIER);
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -221,7 +226,7 @@ public class StockDetailsFormController implements Initializable {
     private void loadSupplierIds() {
         try {
             ObservableList<String> obList = FXCollections.observableArrayList();
-            List<String> iDs = SupplierModel.getIDs();
+            ArrayList<String> iDs = supplierBO.getIDs();
 
             for (String id : iDs) {
                 obList.add(id);

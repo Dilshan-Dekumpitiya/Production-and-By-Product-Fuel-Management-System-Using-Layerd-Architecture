@@ -12,7 +12,10 @@ import javafx.geometry.Pos;
 import javafx.scene.Cursor;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import lk.ijse.palmoilfactory.bo.BOFactory;
+import lk.ijse.palmoilfactory.bo.custom.SupplierBO;
 import lk.ijse.palmoilfactory.db.DBConnection;
+import lk.ijse.palmoilfactory.dto.SupplierDTO;
 import lk.ijse.palmoilfactory.entity.Supplier;
 import lk.ijse.palmoilfactory.dto.tm.SupplierTM;
 import lk.ijse.palmoilfactory.model.SupplierModel;
@@ -26,6 +29,7 @@ import net.sf.jasperreports.view.JasperViewer;
 import java.net.URL;
 import java.nio.file.FileSystems;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import java.util.ResourceBundle;
@@ -72,6 +76,8 @@ public class SupplierDetailsFormController implements Initializable {
 
     private String searchText="";
 
+    private SupplierBO supplierBO= BOFactory.getInstance().getBO(BOFactory.BOTypes.SUPPLIER);
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         Platform.runLater(() -> txtSearch.requestFocus());
@@ -110,8 +116,8 @@ public class SupplierDetailsFormController implements Initializable {
 
     void getAllSupplierToTable(String text) {
         try {
-            List<Supplier> supList = SupplierModel.getAll();
-            for(Supplier supplier : supList) {
+            ArrayList<SupplierDTO> supList = supplierBO.getAllSuppliers();
+            for(SupplierDTO supplier : supList) {
                 if (supplier.getSupName().contains(text) || supplier.getSupAddress().contains(text)){  //Check pass text contains of the supName
                     JFXButton btnDel=new JFXButton("Delete");
                     btnDel.setAlignment(Pos.CENTER);
@@ -151,7 +157,7 @@ public class SupplierDetailsFormController implements Initializable {
                 String supId=txtSupplierId.getText();
                 try {
 
-                    boolean isDeleted = SupplierModel.deleteSupplier(supId);
+                    boolean isDeleted = supplierBO.deleteSupplier(supId);
                     if (isDeleted) {
                         tblSupplier.getItems().clear();
                         new Alert(Alert.AlertType.CONFIRMATION, "Supplier Deleted Successfully").show();
@@ -188,7 +194,7 @@ public class SupplierDetailsFormController implements Initializable {
 
             if(btnSaveSupplier.getText().equalsIgnoreCase("Save Supplier")){
                 try {
-                    isAdded = SupplierModel.addSupplier(supId, supName, supAddress, supContact);
+                    isAdded=supplierBO.addSupplier(new SupplierDTO(supId, supName, supAddress, supContact));
                     if (isAdded) {
                         tblSupplier.getItems().clear();
                         new Alert(Alert.AlertType.CONFIRMATION, "Supplier Added").show();
@@ -211,7 +217,7 @@ public class SupplierDetailsFormController implements Initializable {
                 }else {
                     boolean isUpdated;
                     try {
-                        isUpdated = SupplierModel.updateSupplier(supId, supName, supAddress, supContact);
+                        isUpdated = supplierBO.updateSupplier(new SupplierDTO(supName, supAddress, supContact,supId));
                         if (isUpdated) {
                             tblSupplier.getItems().clear();
                             new Alert(Alert.AlertType.CONFIRMATION, "Supplier Updated").show();
@@ -219,12 +225,16 @@ public class SupplierDetailsFormController implements Initializable {
                             getAllSupplierToTable(searchText);
 
                         } else {
-                            new Alert(Alert.AlertType.WARNING, "Supplier Not Updated Please Try Again").show();
+                            System.out.println("Hello");
+
+                            //new Alert(Alert.AlertType.WARNING, "Supplier Not Updated Please Try Again").show();
                         }
                     } catch (SQLException e) {
-                        new Alert(Alert.AlertType.ERROR, "OOPSSS!! something happened!!!").show();
+                        System.out.println(event);
+                        //new Alert(Alert.AlertType.ERROR, "OOPSSS!! something happened!!!").show();
                     } catch (ClassNotFoundException e) {
-                        new Alert(Alert.AlertType.ERROR, "OOPSSS!! something happened!!!").show();
+                        System.out.println(event);
+                       // new Alert(Alert.AlertType.ERROR, "OOPSSS!! something happened!!!").show();
                     }
                 }
             }
@@ -238,7 +248,7 @@ public class SupplierDetailsFormController implements Initializable {
         }else {
             String id = txtSupplierId.getText();
             try {
-                Supplier supplier = SupplierModel.searchSupplier(id);
+                SupplierDTO supplier = supplierBO.searchSupplier(id);
 
                 if (supplier != null) {
                     txtSupplierId.setText(supplier.getSupId());
@@ -319,7 +329,7 @@ public class SupplierDetailsFormController implements Initializable {
                 txtSupplierId.setText(tblSupplier.getSelectionModel().getSelectedItem().getSupId());
                 try {
 
-                    boolean isDeleted = SupplierModel.deleteSupplier(supId);
+                    boolean isDeleted = supplierBO.deleteSupplier(supId);
                     if (isDeleted) {
                         tblSupplier.getItems().clear();
                         new Alert(Alert.AlertType.CONFIRMATION, "Supplier Deleted Successfully").show();

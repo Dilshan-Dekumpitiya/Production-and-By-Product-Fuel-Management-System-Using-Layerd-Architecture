@@ -1,7 +1,7 @@
 package lk.ijse.palmoilfactory.model;
 
+import lk.ijse.palmoilfactory.dao.SQLUtil;
 import lk.ijse.palmoilfactory.entity.Employee;
-import lk.ijse.palmoilfactory.util.CrudUtil;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -14,7 +14,7 @@ public class EmployeeModel {
 
         String sql = "SELECT schId FROM schedule";
 
-        ResultSet resultSet= CrudUtil.execute(sql);
+        ResultSet resultSet= SQLUtil.execute(sql);
 
         while(resultSet.next()) {
             schIds.add(resultSet.getString(1));
@@ -26,14 +26,14 @@ public class EmployeeModel {
     public static boolean addEmployee(String empId, String empName, String empAddress, String empContact, double empSalary, String empType, String empSchId) throws SQLException, ClassNotFoundException {
         String sql="INSERT INTO employee(empId,empName,empAddress,contact,salary,type,schId) VALUES(?,?,?,?,?,?,?)";
 
-        return CrudUtil.execute(sql,empId,empName,empAddress,empContact,empSalary,empType,empSchId);
+        return SQLUtil.execute(sql,empId,empName,empAddress,empContact,empSalary,empType,empSchId);
 
     }
 
     public static Employee searchEmployee(String empId) throws SQLException, ClassNotFoundException {
         String sql="SELECT * FROM employee WHERE empId=?";
 
-        ResultSet resultSet = CrudUtil.execute(sql, empId);
+        ResultSet resultSet = SQLUtil.execute(sql, empId);
 
         if(resultSet.next()) {
             String  employeeId = resultSet.getString(1);
@@ -52,7 +52,7 @@ public class EmployeeModel {
     public static String searchByempIdEmployeeType(String empId) throws SQLException, ClassNotFoundException {
         String sql="SELECT type FROM employee WHERE empId = ?";
 
-        ResultSet resultSet=CrudUtil.execute(sql,empId);
+        ResultSet resultSet=SQLUtil.execute(sql,empId);
 
         if(resultSet.next()){
             return resultSet.getString("type");
@@ -64,7 +64,7 @@ public class EmployeeModel {
     public static String searchByempIdEmployeeSchId(String empId) throws SQLException, ClassNotFoundException {
         String sql="SELECT schId FROM employee WHERE empId = ?";
 
-        ResultSet resultSet=CrudUtil.execute(sql,empId);
+        ResultSet resultSet=SQLUtil.execute(sql,empId);
 
         if(resultSet.next()){
             return resultSet.getString("schId");
@@ -77,13 +77,13 @@ public class EmployeeModel {
 
         String sql="UPDATE employee SET empName = ?, empAddress = ?, contact = ? , salary = ?, type = ? , schId=? WHERE empId = ?";
 
-        return CrudUtil.execute(sql,  empName, empAddress, empContact,empSalary,empType,empSchId,empId);
+        return SQLUtil.execute(sql,  empName, empAddress, empContact,empSalary,empType,empSchId,empId);
     }
 
     public static boolean deleteEmployee(String empId) throws SQLException, ClassNotFoundException {
         String sql="DELETE FROM employee WHERE empId=? ";
 
-        return CrudUtil.execute(sql,empId);
+        return SQLUtil.execute(sql,empId);
 
     }
 
@@ -92,7 +92,7 @@ public class EmployeeModel {
 
         List<Employee> empData = new ArrayList<>();
 
-        ResultSet resultSet = CrudUtil.execute(sql);
+        ResultSet resultSet = SQLUtil.execute(sql);
         while (resultSet.next()) {
             empData.add(new Employee(
                     resultSet.getString(1),

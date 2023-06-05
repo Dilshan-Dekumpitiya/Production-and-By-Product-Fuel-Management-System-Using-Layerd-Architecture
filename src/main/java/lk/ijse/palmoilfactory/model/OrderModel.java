@@ -1,8 +1,8 @@
 package lk.ijse.palmoilfactory.model;
 
+import lk.ijse.palmoilfactory.dao.SQLUtil;
 import lk.ijse.palmoilfactory.db.DBConnection;
 import lk.ijse.palmoilfactory.entity.Orders;
-import lk.ijse.palmoilfactory.util.CrudUtil;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -16,7 +16,7 @@ public class OrderModel {
 
         String sql = "SELECT orderId FROM orders ORDER BY orderId DESC LIMIT 1";
 
-        ResultSet resultSet = CrudUtil.execute(sql);
+        ResultSet resultSet = SQLUtil.execute(sql);
         if(resultSet.next()) {
             return splitOrderId(resultSet.getString(1));
         }
@@ -40,7 +40,7 @@ public class OrderModel {
 
         List<Orders> orderData = new ArrayList<>();
 
-        ResultSet resultSet = CrudUtil.execute(sql);
+        ResultSet resultSet = SQLUtil.execute(sql);
 
         while (resultSet.next()) {
             orderData.add(new Orders(
@@ -56,7 +56,7 @@ public class OrderModel {
     public static boolean addOrder(String orderId, String orderDate, double qty, double price) throws SQLException, ClassNotFoundException {
         String sql="INSERT INTO orders(orderId,date,quantity,price) VALUES(?,?,?,?)";
 
-        return CrudUtil.execute(sql, orderId, orderDate, qty, price);
+        return SQLUtil.execute(sql, orderId, orderDate, qty, price);
 
     }
 

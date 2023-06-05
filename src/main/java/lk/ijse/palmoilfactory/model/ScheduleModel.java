@@ -1,6 +1,6 @@
 package lk.ijse.palmoilfactory.model;
 
-import lk.ijse.palmoilfactory.util.CrudUtil;
+import lk.ijse.palmoilfactory.dao.SQLUtil;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -11,7 +11,7 @@ public class ScheduleModel {
     public static String searchBySchIdTimeRange(String schId) throws SQLException, ClassNotFoundException {
         String sql="SELECT timeRange from schedule WHERE schId = ? ";
 
-        ResultSet resultSet= CrudUtil.execute(sql,schId);
+        ResultSet resultSet= SQLUtil.execute(sql,schId);
 
         if(resultSet.next()){
             return resultSet.getString("timeRange");
@@ -22,7 +22,7 @@ public class ScheduleModel {
     public static String searchByTimeRangeSchId(String timeRange) throws SQLException, ClassNotFoundException {
         String sql="SELECT schId from schedule WHERE timeRange = ? ";
 
-        ResultSet resultSet= CrudUtil.execute(sql,timeRange);
+        ResultSet resultSet= SQLUtil.execute(sql,timeRange);
 
         if(resultSet.next()){
             return resultSet.getString("schId");
@@ -35,7 +35,7 @@ public class ScheduleModel {
 
         String sql = "SELECT timeRange FROM schedule";
 
-        ResultSet resultSet=CrudUtil.execute(sql);
+        ResultSet resultSet=SQLUtil.execute(sql);
 
         while(resultSet.next()) {
             timeRanges.add(resultSet.getString(1));
@@ -49,7 +49,7 @@ public class ScheduleModel {
 
         String sql = "SELECT schId FROM schedule";
 
-        ResultSet resultSet=CrudUtil.execute(sql);
+        ResultSet resultSet=SQLUtil.execute(sql);
 
         while(resultSet.next()) {
             schIds.add(resultSet.getString(1));

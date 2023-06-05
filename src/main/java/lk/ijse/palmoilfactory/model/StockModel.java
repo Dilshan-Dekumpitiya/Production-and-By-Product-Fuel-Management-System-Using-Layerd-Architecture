@@ -1,8 +1,8 @@
 package lk.ijse.palmoilfactory.model;
 
+import lk.ijse.palmoilfactory.dao.SQLUtil;
 import lk.ijse.palmoilfactory.db.DBConnection;
 import lk.ijse.palmoilfactory.entity.Stock;
-import lk.ijse.palmoilfactory.util.CrudUtil;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -16,7 +16,7 @@ public class StockModel {
 
         String sql="INSERT INTO ffbstock(stockId,ffbInput,date,time,supId)"+"VALUES(?,?,?,?,?)";
 
-        return CrudUtil.execute(sql,stockId,ffbInput,date,time,supId);
+        return SQLUtil.execute(sql,stockId,ffbInput,date,time,supId);
 
 
     }
@@ -26,7 +26,7 @@ public class StockModel {
 
         String sql="SELECT * FROM ffbstock WHERE stockId=?";
 
-        ResultSet resultSet = CrudUtil.execute(sql, stockId);
+        ResultSet resultSet = SQLUtil.execute(sql, stockId);
 
         if(resultSet.next()) {
             String  stkId = resultSet.getString(1);
@@ -44,7 +44,7 @@ public class StockModel {
 
         String sql="UPDATE ffbstock SET ffbInput = ?, date = ?, time = ? , supId = ? WHERE stockId = ?";
 
-        return CrudUtil.execute(sql,ffbInput,date,time,supId,stockId);
+        return SQLUtil.execute(sql,ffbInput,date,time,supId,stockId);
 
     }
 
@@ -52,14 +52,14 @@ public class StockModel {
 
         String sql="DELETE FROM ffbstock WHERE stockId=? ";
 
-        return CrudUtil.execute(sql,stockId);
+        return SQLUtil.execute(sql,stockId);
     }
 
     public static String searchByStockIdSupId(String stockId) throws SQLException, ClassNotFoundException {
 
         String sql="SELECT supId FROM ffbstock WHERE stockId = ?";
 
-        ResultSet resultSet=CrudUtil.execute(sql,stockId);
+        ResultSet resultSet=SQLUtil.execute(sql,stockId);
 
         if(resultSet.next()){
             return resultSet.getString("supId");
@@ -71,7 +71,7 @@ public class StockModel {
 
         String sql="SELECT ffbInput from ffbstock WHERE stockId = ? ";
 
-        ResultSet resultSet=CrudUtil.execute(sql,stockId);
+        ResultSet resultSet=SQLUtil.execute(sql,stockId);
 
         if(resultSet.next()){
             return resultSet.getDouble("ffbInput");
@@ -82,7 +82,7 @@ public class StockModel {
     public static String searchByStockIdDate(String stockId) throws SQLException, ClassNotFoundException {
         String sql="SELECT date FROM ffbstock WHERE stockId = ?";
 
-        ResultSet resultSet=CrudUtil.execute(sql,stockId);
+        ResultSet resultSet=SQLUtil.execute(sql,stockId);
 
         if(resultSet.next()){
             return resultSet.getString("date");
@@ -94,7 +94,7 @@ public class StockModel {
     public static String searchByStockIdTime(String stockId) throws SQLException, ClassNotFoundException {
         String sql="SELECT time FROM ffbstock WHERE stockId = ?";
 
-        ResultSet resultSet=CrudUtil.execute(sql,stockId);
+        ResultSet resultSet=SQLUtil.execute(sql,stockId);
 
         if(resultSet.next()){
             return resultSet.getString("time");
@@ -106,7 +106,7 @@ public class StockModel {
     public static double getTotalFFBInput() throws SQLException, ClassNotFoundException {
         String sql = "SELECT SUM(ffbInput) AS total FROM ffbstock";
 
-        ResultSet resultSet=CrudUtil.execute(sql);
+        ResultSet resultSet=SQLUtil.execute(sql);
 
         if(resultSet.next()){
             return Double.parseDouble(String.valueOf(resultSet.getDouble("total")));
@@ -120,7 +120,7 @@ public class StockModel {
 
         List<Stock> stockData = new ArrayList<>();
 
-        ResultSet resultSet = CrudUtil.execute(sql);
+        ResultSet resultSet = SQLUtil.execute(sql);
         while (resultSet.next()) {
             stockData.add(new Stock(
                     resultSet.getString(1),
@@ -146,7 +146,7 @@ public class StockModel {
 
         String sql = "SELECT stockId FROM ffbstock";
 
-        ResultSet resultSet = CrudUtil.execute(sql);
+        ResultSet resultSet = SQLUtil.execute(sql);
 
         while (resultSet.next()) {
             stockIds.add(resultSet.getString(1));

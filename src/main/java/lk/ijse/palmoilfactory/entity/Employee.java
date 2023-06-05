@@ -5,7 +5,7 @@ import lombok.Data;
 
 @Data
 @AllArgsConstructor
-public class Employee {
+public class Employee implements SuperEntity{
     private String empId;
     private String empName;
     private String empAddress;
