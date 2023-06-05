@@ -9,10 +9,11 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
+import lk.ijse.palmoilfactory.bo.BOFactory;
+import lk.ijse.palmoilfactory.bo.custom.StockBO;
 import lk.ijse.palmoilfactory.db.DBConnection;
 import lk.ijse.palmoilfactory.model.OilProductionModel;
 import lk.ijse.palmoilfactory.model.SteamModel;
-import lk.ijse.palmoilfactory.model.StockModel;
 import net.sf.jasperreports.engine.*;
 import net.sf.jasperreports.engine.design.JRDesignQuery;
 import net.sf.jasperreports.engine.design.JasperDesign;
@@ -48,6 +49,9 @@ public class OilProductionFormController implements Initializable {
     @FXML
     private Label lblTotalOilQtyOnHand;
 
+    private StockBO stockBO= BOFactory.getInstance().getBO(BOFactory.BOTypes.STOCK);
+
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         loadStockIds();
@@ -61,7 +65,7 @@ public class OilProductionFormController implements Initializable {
         }
     }
 
-    public static String getTotalOilQtyOnAllStockIDs() {
+    /*public static String getTotalOilQtyOnAllStockIDs() {
 
         try {
 
@@ -82,7 +86,7 @@ public class OilProductionFormController implements Initializable {
              new Alert(Alert.AlertType.ERROR, "SQL Error!").show();
         }
         return null;
-    }
+    }*/
 
     public static String ffbInputOilQty(double ffbInput) {
 
@@ -128,17 +132,17 @@ public class OilProductionFormController implements Initializable {
         String stockId = cmbStockId.getSelectionModel().getSelectedItem();
         try {
 
-            double ffbinput = StockModel.searchByStockIdFFBInput(stockId);
+            double ffbinput = stockBO.searchByStockIdFFBInput(stockId);
 
             double totalPressLiquid=ffbinput*0.3*0.88;
             txtTotalPressLiquid.setText(String.valueOf(totalPressLiquid));
             double totalEBLiquidOutput=ffbinput*0.7*0.72;
             txtTotalEBLiquidOutput.setText(String.valueOf(totalEBLiquidOutput));
 
-            String date= StockModel.searchByStockIdDate(stockId);
+            String date= stockBO.searchByStockIdDate(stockId);
             txtStockDate.setText(date);
 
-            String time = StockModel.searchByStockIdTime(stockId);
+            String time = stockBO.searchByStockIdTime(stockId);
             txtStockTime.setText(time);
 
             String totalOilOutput = Double.toString(totalPressLiquid+totalEBLiquidOutput);

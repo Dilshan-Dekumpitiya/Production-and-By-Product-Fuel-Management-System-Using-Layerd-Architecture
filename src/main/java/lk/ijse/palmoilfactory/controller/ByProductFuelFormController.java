@@ -8,9 +8,10 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
+import lk.ijse.palmoilfactory.bo.BOFactory;
+import lk.ijse.palmoilfactory.bo.custom.StockBO;
 import lk.ijse.palmoilfactory.db.DBConnection;
 import lk.ijse.palmoilfactory.model.SteamModel;
-import lk.ijse.palmoilfactory.model.StockModel;
 import net.sf.jasperreports.engine.*;
 import net.sf.jasperreports.engine.design.JRDesignQuery;
 import net.sf.jasperreports.engine.design.JasperDesign;
@@ -46,6 +47,9 @@ public class ByProductFuelFormController implements Initializable {
     @FXML
     private JFXTextField txtTotalFuel;
 
+    private StockBO stockBO= BOFactory.getInstance().getBO(BOFactory.BOTypes.STOCK);
+
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         loadStockIds();
@@ -74,7 +78,7 @@ public class ByProductFuelFormController implements Initializable {
         String stockId = cmbStockId.getSelectionModel().getSelectedItem();
         try {
 
-            double ffbinput = StockModel.searchByStockIdFFBInput(stockId);
+            double ffbinput = stockBO.searchByStockIdFFBInput(stockId);
 
             double totalPressFiber=ffbinput*0.135;
             txtTotalPressFiber.setText(String.valueOf(totalPressFiber));
@@ -83,10 +87,10 @@ public class ByProductFuelFormController implements Initializable {
             double totalEBFiber=ffbinput*0.03;
             txtTotalEBFiber.setText(String.valueOf(totalEBFiber));
 
-            String date= StockModel.searchByStockIdDate(stockId);
+            String date= stockBO.searchByStockIdDate(stockId);
             txtStockDate.setText(date);
 
-            String time = StockModel.searchByStockIdTime(stockId);
+            String time = stockBO.searchByStockIdTime(stockId);
             txtStockTime.setText(time);
 
             double totalFuel = totalPressFiber+totalShell+totalEBFiber;

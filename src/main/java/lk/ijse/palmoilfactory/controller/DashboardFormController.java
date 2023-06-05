@@ -17,8 +17,9 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import javafx.util.Duration;
+import lk.ijse.palmoilfactory.bo.BOFactory;
+import lk.ijse.palmoilfactory.bo.custom.StockBO;
 import lk.ijse.palmoilfactory.model.OilProductionModel;
-import lk.ijse.palmoilfactory.model.StockModel;
 
 import java.io.IOException;
 import java.net.URL;
@@ -26,6 +27,7 @@ import java.sql.SQLException;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.ResourceBundle;
@@ -49,6 +51,9 @@ public class DashboardFormController implements Initializable {
 
     @FXML
     private BarChart<String, Double>  barChartStockvsOilFuel;
+
+    private StockBO stockBO= BOFactory.getInstance().getBO(BOFactory.BOTypes.STOCK);
+
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -100,7 +105,7 @@ public class DashboardFormController implements Initializable {
 
         try {
          //   int stockIdCount = StockModel.getStockIdsCount();
-            List<String> stockIds = StockModel.getStockIds();
+            ArrayList<String> stockIds = stockBO.getStockIDs();
 
             Collections.sort(stockIds);
 

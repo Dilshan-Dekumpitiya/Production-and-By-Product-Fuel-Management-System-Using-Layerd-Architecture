@@ -62,32 +62,14 @@ public class SupplierBOImpl implements SupplierBO {
 
     @Override
     public SupplierDTO searchSupplier(String id) throws SQLException, ClassNotFoundException {
-        String sql="SELECT * FROM supplier WHERE supId= ?";
 
-        ResultSet resultSet = SQLUtil.execute(sql, id);
-
-        if(resultSet.next()) {
-            String  supId = resultSet.getString(1);
-            String name = resultSet.getString(2);
-            String address = resultSet.getString(3);
-            String contact = resultSet.getString(4);
-
-            return new SupplierDTO(supId, name, address,contact);
-        }
-        return null;
+        Supplier supplier=supplierDAO.search(id);
+        return new SupplierDTO(supplier.getSupId(),supplier.getSupName(),supplier.getSupAddress(),supplier.getSupContact());
     }
 
     @Override
     public ArrayList<String> getIDs() throws SQLException, ClassNotFoundException {
-        ArrayList<String> ids = new ArrayList<>();
 
-        String sql = "SELECT supId FROM supplier";
-
-        ResultSet resultSet=SQLUtil.execute(sql);
-
-        while(resultSet.next()) {
-            ids.add(resultSet.getString(1));
-        }
-        return ids;
+        return supplierDAO.getIDs();
     }
 }

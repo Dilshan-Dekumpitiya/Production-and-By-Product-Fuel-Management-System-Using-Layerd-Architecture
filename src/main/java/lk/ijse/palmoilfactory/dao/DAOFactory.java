@@ -1,5 +1,6 @@
 package lk.ijse.palmoilfactory.dao;
 
+import lk.ijse.palmoilfactory.dao.custom.impl.StockDAOImpl;
 import lk.ijse.palmoilfactory.dao.custom.impl.SupplierDAOImpl;
 
 public class DAOFactory { //Factory Method Design pattern --> Singleton + /Factory Design pattern
@@ -13,7 +14,7 @@ public class DAOFactory { //Factory Method Design pattern --> Singleton + /Facto
 
     public enum DAOTypes {
         //create object types
-        SUPPLIER
+        SUPPLIER,STOCK
     }
 
 
@@ -22,9 +23,9 @@ public class DAOFactory { //Factory Method Design pattern --> Singleton + /Facto
         switch (type) {
             case SUPPLIER:
                 return (T) new SupplierDAOImpl();
-            /*case ITEM:
-                return (T) new ItemDAOImpl();
-            case ORDER:
+            case STOCK:
+                return (T) new StockDAOImpl();
+            /*case ORDER:
                 return (T) new OrderDAOImpl();
             case ORDER_DETAILS:
                 return (T) new OrderDetailsDAOImpl();

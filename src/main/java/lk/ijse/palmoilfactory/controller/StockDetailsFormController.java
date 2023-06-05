@@ -18,12 +18,14 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.util.Duration;
 import lk.ijse.palmoilfactory.bo.BOFactory;
+import lk.ijse.palmoilfactory.bo.custom.StockBO;
 import lk.ijse.palmoilfactory.bo.custom.SupplierBO;
+import lk.ijse.palmoilfactory.dao.custom.StockDAO;
 import lk.ijse.palmoilfactory.db.DBConnection;
+import lk.ijse.palmoilfactory.dto.StockDTO;
 import lk.ijse.palmoilfactory.entity.Stock;
 import lk.ijse.palmoilfactory.dto.tm.StockTM;
 import lk.ijse.palmoilfactory.model.OilProductionModel;
-import lk.ijse.palmoilfactory.model.StockModel;
 import lk.ijse.palmoilfactory.util.Regex;
 import net.sf.jasperreports.engine.*;
 import net.sf.jasperreports.engine.design.JRDesignQuery;
@@ -90,6 +92,8 @@ public class StockDetailsFormController implements Initializable {
 
     private SupplierBO supplierBO= BOFactory.getInstance().getBO(BOFactory.BOTypes.SUPPLIER);
 
+    private StockBO stockBO=BOFactory.getInstance().getBO(BOFactory.BOTypes.STOCK);
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         loadSupplierIds();
@@ -126,8 +130,8 @@ public class StockDetailsFormController implements Initializable {
 
     private void getAllStocksToTable(String searchText) {
         try {
-            List<Stock> stockList = StockModel.getAll();
-            for(Stock stock : stockList) {
+            ArrayList<StockDTO> stockList = stockBO.getAllStocks();
+            for(StockDTO stock : stockList) {
                 if (stock.getStockId().contains(searchText) ){  //Check pass text contains of the supName
                     JFXButton btnDel=new JFXButton("Delete");
                     btnDel.setAlignment(Pos.CENTER);
@@ -171,7 +175,7 @@ public class StockDetailsFormController implements Initializable {
                  btnSearchStockOnAction(e);
                 // btnDeleteStockOnAction(e);
              try {
-                isDeleted = StockModel.deleteStock(stockId);
+                isDeleted = stockBO.deleteStock(stockId);
                 if (isDeleted) {
                     new Alert(Alert.AlertType.CONFIRMATION, "Stock Deleted Successfully").show();
                     //int ffbInput = StockModel.searchByStockIdFFBInput(stockId);
@@ -255,7 +259,11 @@ public class StockDetailsFormController implements Initializable {
 
             if (btnAddStock.getText().equalsIgnoreCase("Save Stock")){
             try {
-               isAdded = StockModel.placeStock(stockId, ffbInput, date,time ,supId); //Transaction
+                isAdded = stockBO.addStock(new StockDTO(
+                        stockId,ffbInput,date,time,supId
+                ));
+
+                //   isAdded = StockModel.placeStock(stockId, ffbInput, date,time ,supId); //Transaction
 
                 if (isAdded) {
                     new Alert(Alert.AlertType.CONFIRMATION, "Stock Added").show();
@@ -283,7 +291,7 @@ public class StockDetailsFormController implements Initializable {
                     new Alert(Alert.AlertType.WARNING, "Please Input Stock ID and Search Stock is exist").show();
                 } else {
                     if(cmbSupplierId.getSelectionModel().isEmpty()){
-                        supId = StockModel.searchByStockIdSupId(stockId);
+                        supId = stockBO.searchByStockIdSupId(stockId);
                     }else {
                         supId=cmbSupplierId.getSelectionModel().getSelectedItem();
                     }
@@ -291,7 +299,10 @@ public class StockDetailsFormController implements Initializable {
                     boolean isUpdated;
 
                     try {
-                        isUpdated = StockModel.updateStock(stockId, ffbInput, String.valueOf(dtpckrDate.getValue()), lblTime.getText(), supId);
+                        isUpdated=stockBO.updateStock(new StockDTO(
+                                stockId, ffbInput, String.valueOf(dtpckrDate.getValue()), lblTime.getText(), supId
+                        ));
+                  //      isUpdated = StockModel.updateStock(stockId, ffbInput, String.valueOf(dtpckrDate.getValue()), lblTime.getText(), supId);
                         if (isUpdated) {
                             new Alert(Alert.AlertType.CONFIRMATION, "Stock Updated").show();
                             txtStockId.clear();
@@ -320,13 +331,13 @@ public class StockDetailsFormController implements Initializable {
         }else {
             String stockId = txtStockId.getText();
             try {
-                Stock stock = StockModel.searchStock(stockId);
+                StockDTO stock = stockBO.searchStock(stockId);
                 if (stock != null) {
                     txtFFBInput.setText(String.valueOf(stock.getFfbInput()));
                     dtpckrDate.setValue(LocalDate.parse(stock.getDate()));
                     stopTimeline();
                     lblTime.setText(stock.getTime());
-                    cmbSupplierId.setValue(StockModel.searchByStockIdSupId(stockId));
+                    cmbSupplierId.setValue(stockBO.searchByStockIdSupId(stockId));
 
                 } else {
                     new Alert(Alert.AlertType.WARNING, "Stock Not Found Please Try Again").show();
@@ -381,7 +392,7 @@ public class StockDetailsFormController implements Initializable {
                 txtStockId.setText(tblStockDetails.getSelectionModel().getSelectedItem().getStockId());
                 try {
 
-                    isDeleted = StockModel.deleteStock(stockId);
+                    isDeleted = stockBO.deleteStock(stockId);
                     if (isDeleted) {
                         new Alert(Alert.AlertType.CONFIRMATION, "Stock Deleted Successfully").show();
                         //int ffbInput = StockModel.searchByStockIdFFBInput(stockId);

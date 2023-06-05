@@ -8,9 +8,10 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
+import lk.ijse.palmoilfactory.bo.BOFactory;
+import lk.ijse.palmoilfactory.bo.custom.StockBO;
 import lk.ijse.palmoilfactory.db.DBConnection;
 import lk.ijse.palmoilfactory.model.SteamModel;
-import lk.ijse.palmoilfactory.model.StockModel;
 import net.sf.jasperreports.engine.*;
 import net.sf.jasperreports.engine.design.JRDesignQuery;
 import net.sf.jasperreports.engine.design.JasperDesign;
@@ -40,6 +41,8 @@ public class SteamDetailsFormController implements Initializable {
     @FXML
     private JFXTextField txtEmptyBunchOutput;
 
+    private StockBO stockBO= BOFactory.getInstance().getBO(BOFactory.BOTypes.STOCK);
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         loadStockIds();
@@ -68,17 +71,17 @@ public class SteamDetailsFormController implements Initializable {
         String stockId = cmbStockId.getSelectionModel().getSelectedItem();
         try {
 
-            double ffbinput = StockModel.searchByStockIdFFBInput(stockId);
+            double ffbinput = stockBO.searchByStockIdFFBInput(stockId);
 
             double fruitOutput=ffbinput*0.3;
             txtFruitOutput.setText(String.valueOf(fruitOutput));
             double emptyBunchoutput=ffbinput*0.7;
             txtEmptyBunchOutput.setText(String.valueOf(emptyBunchoutput));
 
-            String date= StockModel.searchByStockIdDate(stockId);
+            String date= stockBO.searchByStockIdDate(stockId);
             txtStockDate.setText(date);
 
-            String time = StockModel.searchByStockIdTime(stockId);
+            String time = stockBO.searchByStockIdTime(stockId);
             txtStockTime.setText(time);
 
         } catch (SQLException e) {

@@ -1,5 +1,7 @@
 package lk.ijse.palmoilfactory.model;
 
+import lk.ijse.palmoilfactory.bo.BOFactory;
+import lk.ijse.palmoilfactory.bo.custom.StockBO;
 import lk.ijse.palmoilfactory.dao.SQLUtil;
 
 import java.sql.ResultSet;
@@ -8,6 +10,8 @@ import java.util.List;
 
 
 public class OilProductionModel {
+
+    private static StockBO stockBO= BOFactory.getInstance().getBO(BOFactory.BOTypes.STOCK);
 
     public static String getUpdatedOilqty() throws SQLException, ClassNotFoundException {
 
@@ -43,7 +47,7 @@ public class OilProductionModel {
     }
 
     public static String getTotalOileveryStock(String stockId) throws SQLException, ClassNotFoundException {
-        double ffbinput = StockModel.searchByStockIdFFBInput(stockId);
+        double ffbinput = stockBO.searchByStockIdFFBInput(stockId);
 
         double totalPressLiquid=ffbinput*0.3*0.88;
 
@@ -55,7 +59,7 @@ public class OilProductionModel {
     }
 
     public static String getTotalFueleveryStock(String stockId) throws SQLException, ClassNotFoundException {
-        double ffbinput = StockModel.searchByStockIdFFBInput(stockId);
+        double ffbinput = stockBO.searchByStockIdFFBInput(stockId);
 
         double totalPressFiber=ffbinput*0.135;
        // txtTotalPressFiber.setText(String.valueOf(totalPressFiber));
