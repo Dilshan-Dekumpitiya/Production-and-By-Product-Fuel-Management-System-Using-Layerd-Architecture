@@ -1,6 +1,8 @@
 package lk.ijse.palmoilfactory.bo.custom.impl;
 
 import javafx.scene.control.Alert;
+import lk.ijse.palmoilfactory.bo.BOFactory;
+import lk.ijse.palmoilfactory.bo.custom.PlaceStockBO;
 import lk.ijse.palmoilfactory.bo.custom.StockBO;
 import lk.ijse.palmoilfactory.dao.DAOFactory;
 import lk.ijse.palmoilfactory.dao.custom.StockDAO;
@@ -64,11 +66,11 @@ public class StockBOImpl implements StockBO {
         return stockDAO.getStockIds();
     }
 
-    @Override
+    /*@Override
     public boolean placeStock(StockDTO stockDTO) throws SQLException {
 
         return stockDAO.placeStock(new Stock(stockDTO.getStockId(),stockDTO.getFfbInput(),stockDTO.getDate(),stockDTO.getTime(),stockDTO.getSupId()));
-    }
+    }*/
 
     @Override
     public String searchByStockIdSupId(String stockId) throws SQLException, ClassNotFoundException {

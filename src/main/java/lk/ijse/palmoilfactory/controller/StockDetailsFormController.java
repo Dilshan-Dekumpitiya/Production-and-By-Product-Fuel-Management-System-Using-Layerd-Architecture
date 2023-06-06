@@ -18,6 +18,7 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.util.Duration;
 import lk.ijse.palmoilfactory.bo.BOFactory;
+import lk.ijse.palmoilfactory.bo.custom.PlaceStockBO;
 import lk.ijse.palmoilfactory.bo.custom.StockBO;
 import lk.ijse.palmoilfactory.bo.custom.SupplierBO;
 import lk.ijse.palmoilfactory.dao.custom.StockDAO;
@@ -93,6 +94,8 @@ public class StockDetailsFormController implements Initializable {
     private SupplierBO supplierBO= BOFactory.getInstance().getBO(BOFactory.BOTypes.SUPPLIER);
 
     private StockBO stockBO=BOFactory.getInstance().getBO(BOFactory.BOTypes.STOCK);
+
+    private PlaceStockBO placeStockBO=BOFactory.getInstance().getBO(BOFactory.BOTypes.PLACESTOCK);
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -255,17 +258,14 @@ public class StockDetailsFormController implements Initializable {
             String time=lblTime.getText();
             String supId = String.valueOf(cmbSupplierId.getSelectionModel().getSelectedItem());
 
-            boolean isAdded;
+            boolean isPlaced;
 
             if (btnAddStock.getText().equalsIgnoreCase("Save Stock")){
             try {
-                isAdded = stockBO.addStock(new StockDTO(
-                        stockId,ffbInput,date,time,supId
-                ));
 
-                //   isAdded = StockModel.placeStock(stockId, ffbInput, date,time ,supId); //Transaction
-
-                if (isAdded) {
+                 //  isAdded = StockModel.placeStock(stockId, ffbInput, date,time ,supId); //Transaction
+                isPlaced = placeStockBO.placeStock(new Stock(stockId, ffbInput, date,time ,supId)); //Transaction
+                if (isPlaced) {
                     new Alert(Alert.AlertType.CONFIRMATION, "Stock Added").show();
 
                    String ffbInputOilQty = OilProductionFormController.ffbInputOilQty(ffbInput);
@@ -279,7 +279,8 @@ public class StockDetailsFormController implements Initializable {
                     txtStockId.requestFocus();
 
                 } else {
-                    new Alert(Alert.AlertType.WARNING, "Stock Not Added Please Try Again").show();
+                    System.out.println("Hello");
+                   // new Alert(Alert.AlertType.WARNING, "Stock Not Added Please Try Again").show();
                 }
             } catch (SQLException e) {
                 new Alert(Alert.AlertType.ERROR, "OOPSSS!! something happened!!!").show();

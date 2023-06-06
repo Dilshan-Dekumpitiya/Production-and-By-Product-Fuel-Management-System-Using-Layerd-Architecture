@@ -24,7 +24,7 @@ public interface StockBO extends SuperBO {
 
     public ArrayList<String> getStockIDs() throws SQLException, ClassNotFoundException;
 
-    public boolean placeStock(StockDTO dto) throws SQLException;
+  //  public boolean placeStock(StockDTO dto) throws SQLException;
 
     public String searchByStockIdSupId(String stockId) throws SQLException, ClassNotFoundException;
 
