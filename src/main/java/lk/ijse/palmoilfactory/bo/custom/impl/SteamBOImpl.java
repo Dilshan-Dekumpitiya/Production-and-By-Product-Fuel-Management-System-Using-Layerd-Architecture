@@ -7,6 +7,7 @@ import lk.ijse.palmoilfactory.dto.SteamDTO;
 import lk.ijse.palmoilfactory.entity.Steam;
 
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 public class SteamBOImpl implements SteamBO {
 
@@ -17,4 +18,5 @@ public class SteamBOImpl implements SteamBO {
                 dto.getStockId(), dto.getFruitOutput(),dto.getEmptyBunchoutput(),dto.getDate(),dto.getTime()
         ));
     }
+
 }

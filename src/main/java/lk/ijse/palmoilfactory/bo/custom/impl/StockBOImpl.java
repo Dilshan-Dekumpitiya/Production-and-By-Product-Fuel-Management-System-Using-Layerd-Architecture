@@ -68,12 +68,6 @@ public class StockBOImpl implements StockBO {
         return stockDAO.getStockIds();
     }
 
-    /*@Override
-    public boolean placeStock(StockDTO stockDTO) throws SQLException {
-
-        return stockDAO.placeStock(new Stock(stockDTO.getStockId(),stockDTO.getFfbInput(),stockDTO.getDate(),stockDTO.getTime(),stockDTO.getSupId()));
-    }*/
-
     @Override
     public String searchByStockIdSupId(String stockId) throws SQLException, ClassNotFoundException {
         return stockDAO.searchByStockIdSupId(stockId);
