@@ -61,6 +61,6 @@ public class OilProductionBOImpl implements OilProductionBO {
 
     @Override
     public boolean addOilProduction(OilProductionDTO oilProductionDTO) throws SQLException, ClassNotFoundException {
-        return oilProductionDAO.addOilProduction(new OilProduction(oilProductionDTO.getStockID(),oilProductionDTO.getTotalEBLiquid(),oilProductionDTO.getTotalPressLiquid(),oilProductionDTO.getDate(),oilProductionDTO.getTime()));
+        return oilProductionDAO.add(new OilProduction(oilProductionDTO.getStockID(),oilProductionDTO.getTotalEBLiquid(),oilProductionDTO.getTotalPressLiquid(),oilProductionDTO.getDate(),oilProductionDTO.getTime()));
     }
 }

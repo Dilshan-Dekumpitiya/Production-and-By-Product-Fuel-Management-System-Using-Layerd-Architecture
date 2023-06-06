@@ -10,6 +10,5 @@ public interface OilProductionDAO extends CrudDAO<OilProduction> {
     public String getUpdatedOilqty() throws SQLException, ClassNotFoundException;
     public boolean subtractionOilQtyTototalOil(double qty) throws SQLException, ClassNotFoundException;
     public boolean addOilQtyTototalOil(double qty) throws SQLException, ClassNotFoundException;
-    public boolean addOilProduction(OilProduction oilProduction) throws SQLException, ClassNotFoundException;
 
 }

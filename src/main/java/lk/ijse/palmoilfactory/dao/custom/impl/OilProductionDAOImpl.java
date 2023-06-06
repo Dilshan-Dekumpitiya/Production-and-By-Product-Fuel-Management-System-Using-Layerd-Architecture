@@ -17,7 +17,11 @@ public class OilProductionDAOImpl implements OilProductionDAO {
 
     @Override
     public boolean add(OilProduction entity) throws SQLException, ClassNotFoundException {
-        throw new UnsupportedOperationException("This feature is not implemented yet");
+        String sql="INSERT INTO oilproduction(stockId,totalEBLiquid,totalPressLiquid,date,time) VALUES(?,?,?,?,?)";
+
+        return SQLUtil.execute(sql,entity.getStockID(),entity.getTotalEBLiquid(),entity.getTotalPressLiquid(),entity.getDate(),entity.getTime());
+
+
     }
 
     @Override
@@ -71,13 +75,4 @@ public class OilProductionDAOImpl implements OilProductionDAO {
         return SQLUtil.execute(sql,qty);
     }
 
-
-    @Override
-    public boolean addOilProduction(OilProduction oilProduction) throws SQLException, ClassNotFoundException {
-        String sql="INSERT INTO oilproduction(stockId,totalEBLiquid,totalPressLiquid,date,time) VALUES(?,?,?,?,?)";
-
-        return SQLUtil.execute(sql,oilProduction.getStockID(),oilProduction.getTotalEBLiquid(),oilProduction.getTotalPressLiquid(),oilProduction.getDate(),oilProduction.getTime());
-
-
-    }
 }

@@ -6,7 +6,7 @@ import lombok.Data;
 
 @Data
 @AllArgsConstructor
-public class ScheduleDTO implements SuperEntity {
+public class ScheduleDTO {
     private String schId;
     private String timeRange;
 }

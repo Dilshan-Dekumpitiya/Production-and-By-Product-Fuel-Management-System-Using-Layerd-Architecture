@@ -8,13 +8,6 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 public class SteamDAOImpl implements SteamDAO {
-    @Override
-    public boolean addSteam(Steam steam) throws SQLException, ClassNotFoundException {
-        String sql="INSERT INTO steam(stockId,fruit,emptyBunch,date,time) VALUES(?,?,?,?,?)";
-
-        return SQLUtil.execute(sql, steam.getStockId(), steam.getFruitOutput(), steam.getEmptyBunchoutput(), steam.getDate(),steam.getTime());
-
-    }
 
     @Override
     public ArrayList<Steam> getAll() throws SQLException, ClassNotFoundException {
@@ -23,7 +16,10 @@ public class SteamDAOImpl implements SteamDAO {
 
     @Override
     public boolean add(Steam entity) throws SQLException, ClassNotFoundException {
-        throw new UnsupportedOperationException("This feature is not implemented yet");
+        String sql="INSERT INTO steam(stockId,fruit,emptyBunch,date,time) VALUES(?,?,?,?,?)";
+
+        return SQLUtil.execute(sql, entity.getStockId(), entity.getFruitOutput(), entity.getEmptyBunchoutput(), entity.getDate(),entity.getTime());
+
     }
 
     @Override

@@ -14,7 +14,7 @@ public class SteamBOImpl implements SteamBO {
     private SteamDAO steamDAO= DAOFactory.getInstance().getDAO(DAOFactory.DAOTypes.STEAM);
     @Override
     public boolean addSteam(SteamDTO dto) throws SQLException, ClassNotFoundException {
-        return steamDAO.addSteam(new Steam(
+        return steamDAO.add(new Steam(
                 dto.getStockId(), dto.getFruitOutput(),dto.getEmptyBunchoutput(),dto.getDate(),dto.getTime()
         ));
     }
