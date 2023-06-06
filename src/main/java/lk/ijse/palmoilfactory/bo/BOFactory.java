@@ -1,9 +1,6 @@
 package lk.ijse.palmoilfactory.bo;
 
-import lk.ijse.palmoilfactory.bo.custom.impl.ScheduleBOImpl;
-import lk.ijse.palmoilfactory.bo.custom.impl.SteamBOImpl;
-import lk.ijse.palmoilfactory.bo.custom.impl.StockBOImpl;
-import lk.ijse.palmoilfactory.bo.custom.impl.SupplierBOImpl;
+import lk.ijse.palmoilfactory.bo.custom.impl.*;
 
 public class BOFactory {//Factory Method Design pattern --> Singleton + /Factory Design pattern
     //Singleton applied
@@ -16,7 +13,7 @@ public class BOFactory {//Factory Method Design pattern --> Singleton + /Factory
 
     public enum BOTypes {
         //create object types
-        SUPPLIER,STOCK,STEAM,SCHEDULE
+        SUPPLIER,STOCK,STEAM,SCHEDULE,ORDER
     }
 
 
@@ -31,6 +28,8 @@ public class BOFactory {//Factory Method Design pattern --> Singleton + /Factory
                 return (T) new SteamBOImpl();
             case SCHEDULE:
                 return (T) new ScheduleBOImpl();
+            case ORDER:
+                return (T) new OrderBOImpl();
             /*case ORDER:
                 return (T) new OrderDAOImpl();
             case ORDER_DETAILS:

@@ -9,11 +9,13 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import lk.ijse.palmoilfactory.bo.BOFactory;
+import lk.ijse.palmoilfactory.bo.custom.OrderBO;
 import lk.ijse.palmoilfactory.db.DBConnection;
-import lk.ijse.palmoilfactory.entity.Orders;
+import lk.ijse.palmoilfactory.dto.OrderDTO;
+import lk.ijse.palmoilfactory.entity.Order;
 import lk.ijse.palmoilfactory.dto.tm.OrderTM;
 import lk.ijse.palmoilfactory.model.OilProductionModel;
-import lk.ijse.palmoilfactory.model.OrderModel;
 import net.sf.jasperreports.engine.*;
 import net.sf.jasperreports.engine.design.JRDesignQuery;
 import net.sf.jasperreports.engine.design.JasperDesign;
@@ -24,6 +26,7 @@ import java.net.URL;
 import java.nio.file.FileSystems;
 import java.sql.SQLException;
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
 
@@ -65,6 +68,8 @@ public class OrderDetailsFormController implements Initializable {
 
     private String text="";
 
+    private OrderBO orderBO= BOFactory.getInstance().getBO(BOFactory.BOTypes.ORDER);
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         Platform.runLater(() -> txtQty.requestFocus());
@@ -96,7 +101,7 @@ public class OrderDetailsFormController implements Initializable {
 
     private void generateNextOrderId() {
         try {
-            String nextId = OrderModel.generateNextOrderId();
+            String nextId = orderBO.generateNextOrderId();
             lblOrderId.setText(nextId);
         } catch (SQLException | ClassNotFoundException e) {
             new Alert(Alert.AlertType.ERROR, "Something Happened!").show();
@@ -112,8 +117,8 @@ public class OrderDetailsFormController implements Initializable {
 
     private void getOrderDetailToTable(String text) {
         try {
-            List<Orders> orderList = OrderModel.getAll();
-            for(Orders orders : orderList) {
+            ArrayList<OrderDTO> orderList = orderBO.getAll();
+            for(OrderDTO orders : orderList) {
                 if (orders.getOrderDate().contains(text) ){  //Check pass text contains of the order date
 
                     OrderTM tm=new OrderTM(
@@ -161,7 +166,8 @@ public class OrderDetailsFormController implements Initializable {
 
             try {
                     if(checkOilQty(qty)==true){
-                        isPlaced = OrderModel.placeOrder(orderId, orderDate, qty, price); //transaction --> autoCommit(false)
+                        isPlaced=orderBO.placeOrder(new OrderDTO(orderId, orderDate, qty, price)); //transaction
+                       // isPlaced = OrderModel.placeOrder(orderId, orderDate, qty, price); //transaction --> autoCommit(false)
                         if (isPlaced) {
                             tblOrderDetails.getItems().clear();
                             new Alert(Alert.AlertType.CONFIRMATION, "Order Added and Place Order").show();

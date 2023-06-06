@@ -5,7 +5,7 @@ import lombok.Data;
 
 @Data
 @AllArgsConstructor
-public class OrdersDTO {
+public class OrderDTO {
     private String orderId;
     private String orderDate;
     private Double quantity;

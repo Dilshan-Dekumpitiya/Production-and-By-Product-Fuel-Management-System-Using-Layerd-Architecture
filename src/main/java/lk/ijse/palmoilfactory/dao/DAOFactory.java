@@ -1,9 +1,6 @@
 package lk.ijse.palmoilfactory.dao;
 
-import lk.ijse.palmoilfactory.dao.custom.impl.ScheduleDAOImpl;
-import lk.ijse.palmoilfactory.dao.custom.impl.SteamDAOImpl;
-import lk.ijse.palmoilfactory.dao.custom.impl.StockDAOImpl;
-import lk.ijse.palmoilfactory.dao.custom.impl.SupplierDAOImpl;
+import lk.ijse.palmoilfactory.dao.custom.impl.*;
 
 public class DAOFactory { //Factory Method Design pattern --> Singleton + /Factory Design pattern
     //Singleton applied
@@ -16,7 +13,7 @@ public class DAOFactory { //Factory Method Design pattern --> Singleton + /Facto
 
     public enum DAOTypes {
         //create object types
-        SUPPLIER,STOCK,STEAM,SCHEDULE
+        SUPPLIER,STOCK,STEAM,SCHEDULE,ORDER
     }
 
 
@@ -31,6 +28,8 @@ public class DAOFactory { //Factory Method Design pattern --> Singleton + /Facto
                 return (T) new SteamDAOImpl();
             case SCHEDULE:
                 return (T) new ScheduleDAOImpl();
+            case ORDER:
+                return (T) new OrderDAOImpl();
             /*case ORDER:
                 return (T) new OrderDAOImpl();
             case ORDER_DETAILS:
