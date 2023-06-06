@@ -18,12 +18,12 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.util.Duration;
 import lk.ijse.palmoilfactory.bo.BOFactory;
+import lk.ijse.palmoilfactory.bo.custom.OilProductionBO;
 import lk.ijse.palmoilfactory.bo.custom.StockBO;
 import lk.ijse.palmoilfactory.bo.custom.SupplierBO;
 import lk.ijse.palmoilfactory.db.DBConnection;
 import lk.ijse.palmoilfactory.dto.StockDTO;
 import lk.ijse.palmoilfactory.dto.tm.StockTM;
-import lk.ijse.palmoilfactory.model.OilProductionModel;
 import lk.ijse.palmoilfactory.util.Regex;
 import net.sf.jasperreports.engine.*;
 import net.sf.jasperreports.engine.design.JRDesignQuery;
@@ -90,7 +90,9 @@ public class StockDetailsFormController implements Initializable {
     private SupplierBO supplierBO= BOFactory.getInstance().getBO(BOFactory.BOTypes.SUPPLIER);
 
     private StockBO stockBO=BOFactory.getInstance().getBO(BOFactory.BOTypes.STOCK);
-    
+
+    private OilProductionBO oilProductionBO=BOFactory.getInstance().getBO(BOFactory.BOTypes.OILPRODUCTION);
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         loadSupplierIds();
@@ -262,7 +264,8 @@ public class StockDetailsFormController implements Initializable {
                     new Alert(Alert.AlertType.CONFIRMATION, "Stock Added").show();
 
                    String ffbInputOilQty = OilProductionFormController.ffbInputOilQty(ffbInput);
-                   OilProductionModel.addOilQtyTototalOil(Double.parseDouble(ffbInputOilQty));
+                  oilProductionBO.addOilQtyTototalOil(Double.parseDouble(ffbInputOilQty));
+                   // OilProductionModel.addOilQtyTototalOil(Double.parseDouble(ffbInputOilQty));
                     txtStockId.clear();
                     txtFFBInput.clear();
                     cmbSupplierId.getItems().clear();

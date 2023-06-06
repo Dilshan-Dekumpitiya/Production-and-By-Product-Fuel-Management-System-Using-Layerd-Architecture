@@ -10,9 +10,9 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
 import lk.ijse.palmoilfactory.bo.BOFactory;
+import lk.ijse.palmoilfactory.bo.custom.OilProductionBO;
 import lk.ijse.palmoilfactory.bo.custom.StockBO;
 import lk.ijse.palmoilfactory.db.DBConnection;
-import lk.ijse.palmoilfactory.model.OilProductionModel;
 import net.sf.jasperreports.engine.*;
 import net.sf.jasperreports.engine.design.JRDesignQuery;
 import net.sf.jasperreports.engine.design.JasperDesign;
@@ -50,13 +50,13 @@ public class OilProductionFormController implements Initializable {
 
     private StockBO stockBO= BOFactory.getInstance().getBO(BOFactory.BOTypes.STOCK);
 
-
+    private OilProductionBO oilProductionBO=BOFactory.getInstance().getBO(BOFactory.BOTypes.OILPRODUCTION);
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         loadStockIds();
 
         try {
-            lblTotalOilQtyOnHand.setText(OilProductionModel.getUpdatedOilqty());
+            lblTotalOilQtyOnHand.setText(oilProductionBO.getUpdatedOilqty());//OilProductionModel.getUpdatedOilqty());
         } catch (SQLException e) {
             e.printStackTrace();
         } catch (ClassNotFoundException e) {

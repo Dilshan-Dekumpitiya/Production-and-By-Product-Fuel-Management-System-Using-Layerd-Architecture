@@ -1,15 +1,18 @@
 package lk.ijse.palmoilfactory.bo.custom.impl;
 
+import lk.ijse.palmoilfactory.bo.BOFactory;
+import lk.ijse.palmoilfactory.bo.custom.OilProductionBO;
 import lk.ijse.palmoilfactory.bo.custom.StockBO;
 import lk.ijse.palmoilfactory.dao.DAOFactory;
+import lk.ijse.palmoilfactory.dao.custom.OilProductionDAO;
 import lk.ijse.palmoilfactory.dao.custom.SteamDAO;
 import lk.ijse.palmoilfactory.dao.custom.StockDAO;
 import lk.ijse.palmoilfactory.db.DBConnection;
 import lk.ijse.palmoilfactory.dto.StockDTO;
+import lk.ijse.palmoilfactory.entity.OilProduction;
 import lk.ijse.palmoilfactory.entity.Steam;
 import lk.ijse.palmoilfactory.entity.Stock;
 import lk.ijse.palmoilfactory.model.ByProductionFuelModel;
-import lk.ijse.palmoilfactory.model.OilProductionModel;
 
 import java.sql.Connection;
 import java.sql.SQLException;
@@ -19,6 +22,8 @@ public class StockBOImpl implements StockBO {
 
     private StockDAO stockDAO= DAOFactory.getInstance().getDAO(DAOFactory.DAOTypes.STOCK);
     private SteamDAO steamDAO=DAOFactory.getInstance().getDAO(DAOFactory.DAOTypes.STEAM);
+    private OilProductionDAO oilProductionDAO= DAOFactory.getInstance().getDAO(DAOFactory.DAOTypes.OILPRODUCTION);
+
 
     @Override
     public ArrayList<StockDTO> getAllStocks() throws SQLException, ClassNotFoundException {
@@ -119,7 +124,7 @@ public class StockBOImpl implements StockBO {
             if (isAddedToStock) {
                 boolean isAddedToSteam = steamDAO.addSteam(new Steam(stock.getStockId(),fruitOutput,emptyBunchoutput,stock.getDate(),stock.getTime()));
                 //   boolean isAddedToSteam = SteamModel.addSteam(stock.getStockId(),fruitOutput,emptyBunchoutput,stock.getDate(),stock.getTime());
-                boolean isAddedToOilProduction= OilProductionModel.addOilProduction(stock.getStockId(),totalEBLiquid,totalPressLiquid,stock.getDate(),stock.getTime());
+                boolean isAddedToOilProduction= oilProductionDAO.addOilProduction(new OilProduction(stock.getStockId(),totalEBLiquid,totalPressLiquid,stock.getDate(),stock.getTime()));//OilProductionModel.addOilProduction(stock.getStockId(),totalEBLiquid,totalPressLiquid,stock.getDate(),stock.getTime());
                 boolean isAddedToByProduct= ByProductionFuelModel.addByProductFuel(stock.getStockId(),totalEBFiber,totalShell,totalPressFiber,stock.getDate(),stock.getTime());
                 if (isAddedToSteam && isAddedToOilProduction && isAddedToByProduct) {
                     con.commit();

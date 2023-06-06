@@ -10,12 +10,11 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import lk.ijse.palmoilfactory.bo.BOFactory;
+import lk.ijse.palmoilfactory.bo.custom.OilProductionBO;
 import lk.ijse.palmoilfactory.bo.custom.OrderBO;
 import lk.ijse.palmoilfactory.db.DBConnection;
 import lk.ijse.palmoilfactory.dto.OrderDTO;
-import lk.ijse.palmoilfactory.entity.Order;
 import lk.ijse.palmoilfactory.dto.tm.OrderTM;
-import lk.ijse.palmoilfactory.model.OilProductionModel;
 import net.sf.jasperreports.engine.*;
 import net.sf.jasperreports.engine.design.JRDesignQuery;
 import net.sf.jasperreports.engine.design.JasperDesign;
@@ -27,7 +26,6 @@ import java.nio.file.FileSystems;
 import java.sql.SQLException;
 import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.List;
 import java.util.ResourceBundle;
 
 public class OrderDetailsFormController implements Initializable {
@@ -70,6 +68,8 @@ public class OrderDetailsFormController implements Initializable {
 
     private OrderBO orderBO= BOFactory.getInstance().getBO(BOFactory.BOTypes.ORDER);
 
+    private OilProductionBO oilProductionBO=BOFactory.getInstance().getBO(BOFactory.BOTypes.OILPRODUCTION);
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         Platform.runLater(() -> txtQty.requestFocus());
@@ -80,7 +80,7 @@ public class OrderDetailsFormController implements Initializable {
         getOrderDetailToTable(text);  //To get all orders details to table(Not show)
 
         try {
-            lblOilQuantityOnHand.setText(OilProductionModel.getUpdatedOilqty());
+            lblOilQuantityOnHand.setText(oilProductionBO.getUpdatedOilqty());//OilProductionModel.getUpdatedOilqty());
         } catch (SQLException e) {
             e.printStackTrace();
         } catch (ClassNotFoundException e) {
@@ -139,7 +139,7 @@ public class OrderDetailsFormController implements Initializable {
     }
     private boolean checkOilQty(double qty) throws SQLException, ClassNotFoundException {
         try {
-            String totalOilQuantity=OilProductionModel.getUpdatedOilqty();
+            String totalOilQuantity=oilProductionBO.getUpdatedOilqty();
             double value= Double.parseDouble(totalOilQuantity);
             if (value>=qty){
                 return true;
@@ -174,7 +174,7 @@ public class OrderDetailsFormController implements Initializable {
                             clearFields();
                             txtQty.requestFocus();
                             generateNextOrderId();
-                            lblOilQuantityOnHand.setText(OilProductionModel.getUpdatedOilqty());
+                            lblOilQuantityOnHand.setText(oilProductionBO.getUpdatedOilqty());
                             //    OilProductionModel.updateQty(qty);
 
                             getOrderDetailToTable("");

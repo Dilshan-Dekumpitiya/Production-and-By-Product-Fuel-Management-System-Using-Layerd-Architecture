@@ -18,8 +18,8 @@ import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 import lk.ijse.palmoilfactory.bo.BOFactory;
+import lk.ijse.palmoilfactory.bo.custom.OilProductionBO;
 import lk.ijse.palmoilfactory.bo.custom.StockBO;
-import lk.ijse.palmoilfactory.model.OilProductionModel;
 
 import java.io.IOException;
 import java.net.URL;
@@ -29,7 +29,6 @@ import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.List;
 import java.util.ResourceBundle;
 
 
@@ -54,13 +53,14 @@ public class DashboardFormController implements Initializable {
 
     private StockBO stockBO= BOFactory.getInstance().getBO(BOFactory.BOTypes.STOCK);
 
+    private OilProductionBO oilProductionBO=BOFactory.getInstance().getBO(BOFactory.BOTypes.OILPRODUCTION);
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         dateTimeInit();
 
         try {
-            lblTotalOilQtyOnHand.setText(OilProductionModel.getUpdatedOilqty());
+            lblTotalOilQtyOnHand.setText(oilProductionBO.getUpdatedOilqty());//OilProductionModel.getUpdatedOilqty());
         } catch (SQLException e) {
             e.printStackTrace();
         } catch (ClassNotFoundException e) {
@@ -69,7 +69,7 @@ public class DashboardFormController implements Initializable {
 
         String totaloil = null;
         try {
-            totaloil = OilProductionModel.getUpdatedOilqty();
+            totaloil =oilProductionBO.getUpdatedOilqty();
         } catch (SQLException e) {
             e.printStackTrace();
         } catch (ClassNotFoundException e) {
@@ -111,10 +111,10 @@ public class DashboardFormController implements Initializable {
 
             for (int i = 0; i < stockIds.size(); i++) {
                 String stockId = stockIds.get(i);
-                String totalOileveryStock1=OilProductionModel.getTotalOileveryStock(stockId);
+                String totalOileveryStock1=oilProductionBO.getTotalOileveryStock(stockId);//OilProductionModel.getTotalOileveryStock(stockId);
                 Double totalOileveryStock= Double.valueOf(totalOileveryStock1);
 
-                String totalfueleveryStock1=OilProductionModel.getTotalFueleveryStock(stockId);
+                String totalfueleveryStock1=oilProductionBO.getTotalFueleveryStock(stockId);//OilProductionModel.getTotalFueleveryStock(stockId);
                 Double totalfueleveryStock= Double.valueOf(totalfueleveryStock1);
 
                 seriesOil.getData().add(new XYChart.Data<>(stockId, totalOileveryStock));

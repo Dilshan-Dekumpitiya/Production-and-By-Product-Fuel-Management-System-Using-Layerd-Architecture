@@ -2,11 +2,11 @@ package lk.ijse.palmoilfactory.bo.custom.impl;
 
 import lk.ijse.palmoilfactory.bo.custom.OrderBO;
 import lk.ijse.palmoilfactory.dao.DAOFactory;
+import lk.ijse.palmoilfactory.dao.custom.OilProductionDAO;
 import lk.ijse.palmoilfactory.dao.custom.OrderDAO;
 import lk.ijse.palmoilfactory.db.DBConnection;
 import lk.ijse.palmoilfactory.dto.OrderDTO;
 import lk.ijse.palmoilfactory.entity.Order;
-import lk.ijse.palmoilfactory.model.OilProductionModel;
 
 import java.sql.Connection;
 import java.sql.SQLException;
@@ -15,6 +15,8 @@ import java.util.ArrayList;
 public class OrderBOImpl implements OrderBO {
 
     private OrderDAO orderDAO= DAOFactory.getInstance().getDAO(DAOFactory.DAOTypes.ORDER);
+
+    private OilProductionDAO oilProductionDAO=DAOFactory.getInstance().getDAO(DAOFactory.DAOTypes.OILPRODUCTION);
 
     @Override
     public boolean addOrder(OrderDTO orderDTO) throws SQLException, ClassNotFoundException {
@@ -51,7 +53,7 @@ public class OrderBOImpl implements OrderBO {
 
             boolean isAdded = orderDAO.add(new Order(orderDTO.getOrderId(),orderDTO.getOrderDate(),orderDTO.getQuantity(),orderDTO.getPrice()));
             if (isAdded) {
-                boolean isUpdated = OilProductionModel.subtractionOilQtyTototalOil(orderDTO.getQuantity());
+                boolean isUpdated = oilProductionDAO.subtractionOilQtyTototalOil(orderDTO.getQuantity());//OilProductionModel.subtractionOilQtyTototalOil(orderDTO.getQuantity());
                 if (isUpdated) {
                     con.commit();
                     return true;
