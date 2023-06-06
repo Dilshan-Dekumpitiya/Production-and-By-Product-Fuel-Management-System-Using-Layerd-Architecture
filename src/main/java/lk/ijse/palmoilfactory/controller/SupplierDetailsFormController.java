@@ -383,6 +383,7 @@ public class SupplierDetailsFormController implements Initializable {
         txtSearch.clear();
         txtSearch.requestFocus();
         btnSaveSupplier.setText("Save Supplier");
+
     }
 
     @FXML

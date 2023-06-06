@@ -310,6 +310,7 @@ public class StockDetailsFormController implements Initializable {
                             cmbSupplierId.getItems().clear();
                             tblStockDetails.getItems().clear();
                             getAllStocksToTable("");
+                            loadSupplierIds();
                         } else {
                             new Alert(Alert.AlertType.WARNING, "Stock Not Updated Please Try Again").show();
                         }
