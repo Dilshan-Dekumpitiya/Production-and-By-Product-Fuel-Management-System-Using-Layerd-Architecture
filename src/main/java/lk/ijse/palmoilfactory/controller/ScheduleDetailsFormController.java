@@ -8,7 +8,8 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
 import javafx.scene.layout.Pane;
-import lk.ijse.palmoilfactory.model.ScheduleModel;
+import lk.ijse.palmoilfactory.bo.BOFactory;
+import lk.ijse.palmoilfactory.bo.custom.ScheduleBO;
 
 import java.io.IOException;
 import java.net.URL;
@@ -27,6 +28,8 @@ public class ScheduleDetailsFormController implements Initializable {
     @FXML
     private JFXComboBox<String> cmbTimeRange;
 
+    private ScheduleBO scheduleBO= BOFactory.getInstance().getBO(BOFactory.BOTypes.SCHEDULE);
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         loadScheduleIds();
@@ -36,7 +39,7 @@ public class ScheduleDetailsFormController implements Initializable {
     private void loadTimeRange() {
         try {
             ObservableList<String> obList = FXCollections.observableArrayList();
-            List<String> timeRanges = ScheduleModel.getTimeRange();
+            List<String> timeRanges = scheduleBO.getTimeRange();
 
             for (String timeRange : timeRanges) {
                 obList.add(timeRange);
@@ -53,7 +56,7 @@ public class ScheduleDetailsFormController implements Initializable {
     private void loadScheduleIds() {
         try {
             ObservableList<String> obList = FXCollections.observableArrayList();
-            List<String> scheduleIds = ScheduleModel.getScheduleIds();
+            List<String> scheduleIds = scheduleBO.getScheduleIds();
 
             for (String scheduleId : scheduleIds) {
                 obList.add(scheduleId);
@@ -72,7 +75,7 @@ public class ScheduleDetailsFormController implements Initializable {
         String schId = cmbSchId.getSelectionModel().getSelectedItem();
         try {
 
-            String timeRange = ScheduleModel.searchBySchIdTimeRange(schId);
+            String timeRange = scheduleBO.searchBySchIdTimeRange(schId);
 
             cmbTimeRange.setValue(timeRange);
 
@@ -88,7 +91,7 @@ public class ScheduleDetailsFormController implements Initializable {
         String timeRange = cmbTimeRange.getSelectionModel().getSelectedItem();
         try {
 
-            String schId = ScheduleModel.searchByTimeRangeSchId(timeRange);
+            String schId = scheduleBO.searchByTimeRangeSchId(timeRange);
 
             cmbSchId.setValue(schId);
 

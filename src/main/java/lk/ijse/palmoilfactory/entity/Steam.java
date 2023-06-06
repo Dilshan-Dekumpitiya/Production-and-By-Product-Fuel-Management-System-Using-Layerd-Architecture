@@ -5,7 +5,7 @@ import lombok.Data;
 
 @Data
 @AllArgsConstructor
-public class Steam {
+public class Steam implements SuperEntity{
     private String stockId;
     private double fruitOutput;
     private double emptyBunchoutput;

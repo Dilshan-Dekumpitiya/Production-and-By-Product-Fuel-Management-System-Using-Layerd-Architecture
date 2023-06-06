@@ -150,7 +150,7 @@ public class OrderDetailsFormController implements Initializable {
       }
 
     @FXML
-    void btnPlaceOrderOnAction(ActionEvent event) {
+    void btnPlaceOrderOnAction(ActionEvent event) { //Transaction
 
         String orderId = lblOrderId.getText();
         String orderDate = lblOrderDate.getText();
