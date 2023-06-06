@@ -36,4 +36,6 @@ public interface StockBO extends SuperBO {
 
     public double getTotalFFBInput() throws SQLException, ClassNotFoundException;
 
+    public boolean placeStock(StockDTO stock) throws SQLException; //transaction
+
 }

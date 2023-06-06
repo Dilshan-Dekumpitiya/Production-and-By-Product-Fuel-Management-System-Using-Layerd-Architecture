@@ -18,13 +18,10 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.util.Duration;
 import lk.ijse.palmoilfactory.bo.BOFactory;
-import lk.ijse.palmoilfactory.bo.custom.PlaceStockBO;
 import lk.ijse.palmoilfactory.bo.custom.StockBO;
 import lk.ijse.palmoilfactory.bo.custom.SupplierBO;
-import lk.ijse.palmoilfactory.dao.custom.StockDAO;
 import lk.ijse.palmoilfactory.db.DBConnection;
 import lk.ijse.palmoilfactory.dto.StockDTO;
-import lk.ijse.palmoilfactory.entity.Stock;
 import lk.ijse.palmoilfactory.dto.tm.StockTM;
 import lk.ijse.palmoilfactory.model.OilProductionModel;
 import lk.ijse.palmoilfactory.util.Regex;
@@ -41,7 +38,6 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
-import java.util.List;
 import java.util.Optional;
 import java.util.ResourceBundle;
 
@@ -94,9 +90,7 @@ public class StockDetailsFormController implements Initializable {
     private SupplierBO supplierBO= BOFactory.getInstance().getBO(BOFactory.BOTypes.SUPPLIER);
 
     private StockBO stockBO=BOFactory.getInstance().getBO(BOFactory.BOTypes.STOCK);
-
-    private PlaceStockBO placeStockBO=BOFactory.getInstance().getBO(BOFactory.BOTypes.PLACESTOCK);
-
+    
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         loadSupplierIds();
@@ -263,8 +257,7 @@ public class StockDetailsFormController implements Initializable {
             if (btnAddStock.getText().equalsIgnoreCase("Save Stock")){
             try {
 
-                 //  isAdded = StockModel.placeStock(stockId, ffbInput, date,time ,supId); //Transaction
-                isPlaced = placeStockBO.placeStock(new Stock(stockId, ffbInput, date,time ,supId)); //Transaction
+                isPlaced = stockBO.placeStock(new StockDTO(stockId, ffbInput, date,time ,supId)); //Transaction
                 if (isPlaced) {
                     new Alert(Alert.AlertType.CONFIRMATION, "Stock Added").show();
 
