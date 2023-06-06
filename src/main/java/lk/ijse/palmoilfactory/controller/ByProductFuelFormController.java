@@ -11,7 +11,6 @@ import javafx.scene.control.Alert;
 import lk.ijse.palmoilfactory.bo.BOFactory;
 import lk.ijse.palmoilfactory.bo.custom.StockBO;
 import lk.ijse.palmoilfactory.db.DBConnection;
-import lk.ijse.palmoilfactory.model.SteamModel;
 import net.sf.jasperreports.engine.*;
 import net.sf.jasperreports.engine.design.JRDesignQuery;
 import net.sf.jasperreports.engine.design.JasperDesign;
@@ -58,7 +57,7 @@ public class ByProductFuelFormController implements Initializable {
     private void loadStockIds() {
         try {
             ObservableList<String> obList = FXCollections.observableArrayList();
-            List<String> iDs = SteamModel.getStockIDs();
+            List<String> iDs = stockBO.getStockIDs();
 
             Collections.sort(iDs);
 

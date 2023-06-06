@@ -14,5 +14,5 @@ public interface StockDAO extends CrudDAO<Stock> {
     public String searchByStockIdTime(String stockId) throws SQLException, ClassNotFoundException;
     public double getTotalFFBInput() throws SQLException, ClassNotFoundException;
     public ArrayList<String> getStockIds() throws SQLException, ClassNotFoundException;
-    public boolean placeStock(Stock stock) throws SQLException;
+
 }

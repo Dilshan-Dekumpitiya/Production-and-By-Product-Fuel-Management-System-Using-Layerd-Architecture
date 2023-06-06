@@ -13,7 +13,6 @@ import lk.ijse.palmoilfactory.bo.BOFactory;
 import lk.ijse.palmoilfactory.bo.custom.StockBO;
 import lk.ijse.palmoilfactory.db.DBConnection;
 import lk.ijse.palmoilfactory.model.OilProductionModel;
-import lk.ijse.palmoilfactory.model.SteamModel;
 import net.sf.jasperreports.engine.*;
 import net.sf.jasperreports.engine.design.JRDesignQuery;
 import net.sf.jasperreports.engine.design.JasperDesign;
@@ -23,8 +22,8 @@ import net.sf.jasperreports.view.JasperViewer;
 import java.net.URL;
 import java.nio.file.FileSystems;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.Collections;
-import java.util.List;
 import java.util.ResourceBundle;
 
 public class OilProductionFormController implements Initializable {
@@ -103,7 +102,7 @@ public class OilProductionFormController implements Initializable {
     private void loadStockIds() {
         try {
             ObservableList<String> obList = FXCollections.observableArrayList();
-            List<String> iDs = SteamModel.getStockIDs();
+            ArrayList<String> iDs = stockBO.getStockIDs();
            // obList.addAll(iDs);
 
             Collections.sort(iDs);
