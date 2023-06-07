@@ -7,11 +7,11 @@ import lk.ijse.palmoilfactory.dao.custom.OilProductionDAO;
 import lk.ijse.palmoilfactory.dao.custom.SteamDAO;
 import lk.ijse.palmoilfactory.dao.custom.StockDAO;
 import lk.ijse.palmoilfactory.db.DBConnection;
-import lk.ijse.palmoilfactory.dto.StockDTO;
+import lk.ijse.palmoilfactory.dto.FFBStockDTO;
 import lk.ijse.palmoilfactory.entity.ByProductFuel;
 import lk.ijse.palmoilfactory.entity.OilProduction;
 import lk.ijse.palmoilfactory.entity.Steam;
-import lk.ijse.palmoilfactory.entity.Stock;
+import lk.ijse.palmoilfactory.entity.FFBStock;
 
 import java.sql.Connection;
 import java.sql.SQLException;
@@ -26,23 +26,23 @@ public class StockBOImpl implements StockBO {
 
 
     @Override
-    public ArrayList<StockDTO> getAllStocks() throws SQLException, ClassNotFoundException {
-        ArrayList<StockDTO> allStocks= new ArrayList<>();
-        ArrayList<Stock> all = stockDAO.getAll();
-        for (Stock stock : all) {
-            allStocks.add(new StockDTO(stock.getStockId(),stock.getFfbInput(),stock.getDate(),stock.getTime(),stock.getSupId()));
+    public ArrayList<FFBStockDTO> getAllStocks() throws SQLException, ClassNotFoundException {
+        ArrayList<FFBStockDTO> allStocks= new ArrayList<>();
+        ArrayList<FFBStock> all = stockDAO.getAll();
+        for (FFBStock stock : all) {
+            allStocks.add(new FFBStockDTO(stock.getStockId(),stock.getFfbInput(),stock.getDate(),stock.getTime(),stock.getSupId()));
         }
         return allStocks;
     }
 
     @Override
-    public boolean addStock(StockDTO dto) throws SQLException, ClassNotFoundException {
-        return stockDAO.add(new Stock(dto.getStockId(),dto.getFfbInput(),dto.getDate(),dto.getTime(),dto.getSupId()));
+    public boolean addStock(FFBStockDTO dto) throws SQLException, ClassNotFoundException {
+        return stockDAO.add(new FFBStock(dto.getStockId(),dto.getFfbInput(),dto.getDate(),dto.getTime(),dto.getSupId()));
     }
 
     @Override
-    public boolean updateStock(StockDTO dto) throws SQLException, ClassNotFoundException {
-        return stockDAO.update(new Stock(dto.getStockId(),dto.getFfbInput(),dto.getDate(),dto.getTime(),dto.getSupId()));
+    public boolean updateStock(FFBStockDTO dto) throws SQLException, ClassNotFoundException {
+        return stockDAO.update(new FFBStock(dto.getStockId(),dto.getFfbInput(),dto.getDate(),dto.getTime(),dto.getSupId()));
 
     }
 
@@ -62,9 +62,9 @@ public class StockBOImpl implements StockBO {
     }
 
     @Override
-    public StockDTO searchStock(String id) throws SQLException, ClassNotFoundException {
-        Stock stock=stockDAO.search(id);
-        return stock!=null ? new StockDTO(stock.getStockId(),stock.getFfbInput(),stock.getDate(),stock.getTime(),stock.getSupId()) : null;
+    public FFBStockDTO searchStock(String id) throws SQLException, ClassNotFoundException {
+        FFBStock stock=stockDAO.search(id);
+        return stock!=null ? new FFBStockDTO(stock.getStockId(),stock.getFfbInput(),stock.getDate(),stock.getTime(),stock.getSupId()) : null;
 
     }
 
@@ -99,14 +99,14 @@ public class StockBOImpl implements StockBO {
     }
 
     @Override
-    public boolean placeStock(StockDTO stock) throws SQLException { //transaction
+    public boolean placeStock(FFBStockDTO stock) throws SQLException { //transaction
         Connection con = null;
         try {
             con = DBConnection.getInstance().getConnection();
 
             con.setAutoCommit(false);
 
-            boolean isAddedToStock = stockDAO.add(new Stock(stock.getStockId(), stock.getFfbInput(), stock.getDate(), stock.getTime(),stock.getSupId()));
+            boolean isAddedToStock = stockDAO.add(new FFBStock(stock.getStockId(), stock.getFfbInput(), stock.getDate(), stock.getTime(),stock.getSupId()));
 
             //For steam table
             double fruitOutput=stock.getFfbInput()*0.3;

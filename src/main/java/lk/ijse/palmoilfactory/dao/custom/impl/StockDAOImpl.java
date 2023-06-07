@@ -2,7 +2,7 @@ package lk.ijse.palmoilfactory.dao.custom.impl;
 
 import lk.ijse.palmoilfactory.dao.SQLUtil;
 import lk.ijse.palmoilfactory.dao.custom.StockDAO;
-import lk.ijse.palmoilfactory.entity.Stock;
+import lk.ijse.palmoilfactory.entity.FFBStock;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -10,14 +10,14 @@ import java.util.ArrayList;
 
 public class StockDAOImpl implements StockDAO {
     @Override
-    public ArrayList<Stock> getAll() throws SQLException, ClassNotFoundException {
+    public ArrayList<FFBStock> getAll() throws SQLException, ClassNotFoundException {
         String sql = "SELECT * FROM ffbstock";
 
-        ArrayList<Stock> stockData = new ArrayList<>();
+        ArrayList<FFBStock> stockData = new ArrayList<>();
 
         ResultSet resultSet = SQLUtil.execute(sql);
         while (resultSet.next()) {
-            stockData.add(new Stock(
+            stockData.add(new FFBStock(
                     resultSet.getString(1),
                     resultSet.getDouble(2),
                     resultSet.getString(3),
@@ -29,14 +29,14 @@ public class StockDAOImpl implements StockDAO {
     }
 
     @Override
-    public boolean add(Stock entity) throws SQLException, ClassNotFoundException {
+    public boolean add(FFBStock entity) throws SQLException, ClassNotFoundException {
         String sql="INSERT INTO ffbstock(stockId,ffbInput,date,time,supId)"+"VALUES(?,?,?,?,?)";
 
         return SQLUtil.execute(sql,entity.getStockId(),entity.getFfbInput(),entity.getDate(),entity.getTime(),entity.getSupId());
     }
 
     @Override
-    public boolean update(Stock entity) throws SQLException, ClassNotFoundException {
+    public boolean update(FFBStock entity) throws SQLException, ClassNotFoundException {
         String sql="UPDATE ffbstock SET ffbInput = ?, date = ?, time = ? , supId = ? WHERE stockId = ?";
 
         return SQLUtil.execute(sql,entity.getFfbInput(),entity.getDate(),entity.getTime(),entity.getSupId(),entity.getStockId());
@@ -60,7 +60,7 @@ public class StockDAOImpl implements StockDAO {
     }
 
     @Override
-    public Stock search(String id) throws SQLException, ClassNotFoundException {
+    public FFBStock search(String id) throws SQLException, ClassNotFoundException {
         String sql="SELECT * FROM ffbstock WHERE stockId=?";
 
         ResultSet resultSet = SQLUtil.execute(sql, id);
@@ -72,7 +72,7 @@ public class StockDAOImpl implements StockDAO {
             String time = resultSet.getString(4);
             String supId = resultSet.getString(5);
 
-            return new Stock(stkId,ffbInput, date,time,supId);
+            return new FFBStock(stkId,ffbInput, date,time,supId);
         }
         return null;
     }

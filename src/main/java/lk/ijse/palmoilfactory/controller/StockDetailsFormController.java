@@ -22,7 +22,7 @@ import lk.ijse.palmoilfactory.bo.custom.OilProductionBO;
 import lk.ijse.palmoilfactory.bo.custom.StockBO;
 import lk.ijse.palmoilfactory.bo.custom.SupplierBO;
 import lk.ijse.palmoilfactory.db.DBConnection;
-import lk.ijse.palmoilfactory.dto.StockDTO;
+import lk.ijse.palmoilfactory.dto.FFBStockDTO;
 import lk.ijse.palmoilfactory.dto.tm.StockTM;
 import lk.ijse.palmoilfactory.util.Regex;
 import net.sf.jasperreports.engine.*;
@@ -129,8 +129,8 @@ public class StockDetailsFormController implements Initializable {
 
     private void getAllStocksToTable(String searchText) {
         try {
-            ArrayList<StockDTO> stockList = stockBO.getAllStocks();
-            for(StockDTO stock : stockList) {
+            ArrayList<FFBStockDTO> stockList = stockBO.getAllStocks();
+            for(FFBStockDTO stock : stockList) {
                 if (stock.getStockId().contains(searchText) ){  //Check pass text contains of the supName
                     JFXButton btnDel=new JFXButton("Delete");
                     btnDel.setAlignment(Pos.CENTER);
@@ -259,7 +259,7 @@ public class StockDetailsFormController implements Initializable {
             if (btnAddStock.getText().equalsIgnoreCase("Save Stock")){
             try {
 
-                isPlaced = stockBO.placeStock(new StockDTO(stockId, ffbInput, date,time ,supId)); //Transaction
+                isPlaced = stockBO.placeStock(new FFBStockDTO(stockId, ffbInput, date,time ,supId)); //Transaction
                 if (isPlaced) {
                     new Alert(Alert.AlertType.CONFIRMATION, "Stock Added").show();
 
@@ -296,7 +296,7 @@ public class StockDetailsFormController implements Initializable {
                     boolean isUpdated;
 
                     try {
-                        isUpdated=stockBO.updateStock(new StockDTO(
+                        isUpdated=stockBO.updateStock(new FFBStockDTO(
                                 stockId, ffbInput, String.valueOf(dtpckrDate.getValue()), lblTime.getText(), supId
                         ));
                   //      isUpdated = StockModel.updateStock(stockId, ffbInput, String.valueOf(dtpckrDate.getValue()), lblTime.getText(), supId);
@@ -329,7 +329,7 @@ public class StockDetailsFormController implements Initializable {
         }else {
             String stockId = txtStockId.getText();
             try {
-                StockDTO stock = stockBO.searchStock(stockId);
+                FFBStockDTO stock = stockBO.searchStock(stockId);
                 if (stock != null) {
                     txtFFBInput.setText(String.valueOf(stock.getFfbInput()));
                     dtpckrDate.setValue(LocalDate.parse(stock.getDate()));

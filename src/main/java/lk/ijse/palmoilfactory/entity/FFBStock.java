@@ -4,7 +4,7 @@ import lombok.*;
 
 @Data
 @AllArgsConstructor
-public class Stock implements SuperEntity{
+public class FFBStock implements SuperEntity{
     private String stockId;
     private Double ffbInput;
     private String date;

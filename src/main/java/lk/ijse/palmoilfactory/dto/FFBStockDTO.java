@@ -5,7 +5,7 @@ import lombok.Data;
 
 @Data
 @AllArgsConstructor
-public class StockDTO {
+public class FFBStockDTO {
     private String stockId;
     private Double ffbInput;
     private String date;
