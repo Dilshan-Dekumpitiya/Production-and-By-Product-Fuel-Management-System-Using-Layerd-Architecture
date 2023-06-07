@@ -13,7 +13,7 @@ public class DAOFactory { //Factory Method Design pattern --> Singleton + /Facto
 
     public enum DAOTypes {
         //create object types
-        SUPPLIER,STOCK,STEAM,SCHEDULE,ORDER,OILPRODUCTION,BYPRODUCTFUEL,USER
+        SUPPLIER,STOCK,STEAM,SCHEDULE,ORDER,OILPRODUCTION,BYPRODUCTFUEL,USER,EMPLOYEE
     }
 
 
@@ -36,12 +36,9 @@ public class DAOFactory { //Factory Method Design pattern --> Singleton + /Facto
                 return (T) new ByProductFuelDAOImpl();
             case USER:
                 return (T) new UserDAOImpl();
-            /*case ORDER:
-                return (T) new OrderDAOImpl();
-            case ORDER_DETAILS:
-                return (T) new OrderDetailsDAOImpl();
-            case QUERY_DAO:
-                return (T) new QueryDAOImpl();*/
+            case EMPLOYEE:
+                return (T) new EmployeeDAOImpl();
+
             default:
                 return null;
         }

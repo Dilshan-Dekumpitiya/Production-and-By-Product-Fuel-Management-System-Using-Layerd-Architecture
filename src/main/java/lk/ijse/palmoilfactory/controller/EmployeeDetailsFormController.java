@@ -18,10 +18,12 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.Pane;
 import javafx.util.Duration;
+import lk.ijse.palmoilfactory.bo.BOFactory;
+import lk.ijse.palmoilfactory.bo.custom.EmployeeBO;
 import lk.ijse.palmoilfactory.db.DBConnection;
+import lk.ijse.palmoilfactory.dto.EmployeeDTO;
 import lk.ijse.palmoilfactory.entity.Employee;
 import lk.ijse.palmoilfactory.dto.tm.EmployeeTM;
-import lk.ijse.palmoilfactory.model.EmployeeModel;
 import lk.ijse.palmoilfactory.util.Regex;
 import net.sf.jasperreports.engine.*;
 import net.sf.jasperreports.engine.design.JRDesignQuery;
@@ -99,6 +101,8 @@ public class EmployeeDetailsFormController implements Initializable {
 
     private String searchText="";
 
+    private EmployeeBO employeeBO= BOFactory.getInstance().getBO(BOFactory.BOTypes.EMPLOYEE);
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         Platform.runLater(() -> txtEmployeeId.requestFocus());
@@ -135,22 +139,22 @@ public class EmployeeDetailsFormController implements Initializable {
 
     private void getAllEmployeesToTable(String searchText) {
         try {
-            List<Employee> empList = EmployeeModel.getAll();
-            for(Employee employee : empList) {
-                if (employee.getEmpName().contains(searchText) || employee.getEmpAddress().contains(searchText)){  //Check pass text contains of the supName
+           ArrayList<EmployeeDTO> empList = employeeBO.getAllEmployee();//EmployeeModel.getAll();
+            for(EmployeeDTO employeeDTO : empList) {
+                if (employeeDTO.getEmpName().contains(searchText) || employeeDTO.getEmpAddress().contains(searchText)){  //Check pass text contains of the supName
                     JFXButton btnDel=new JFXButton("Delete");
                     btnDel.setAlignment(Pos.CENTER);
                     btnDel.setStyle("-fx-background-color: #e74c3c; ");
                     btnDel.setCursor(Cursor.HAND);
 
                     EmployeeTM tm=new EmployeeTM(
-                            employee.getEmpId(),
-                            employee.getEmpName(),
-                            employee.getEmpAddress(),
-                            employee.getEmpContact(),
-                            employee.getEmpSalary(),
-                            employee.getEmpType(),
-                            employee.getEmpSchId(),
+                            employeeDTO.getEmpId(),
+                            employeeDTO.getEmpName(),
+                            employeeDTO.getEmpAddress(),
+                            employeeDTO.getEmpContact(),
+                            employeeDTO.getEmpSalary(),
+                            employeeDTO.getEmpType(),
+                            employeeDTO.getEmpSchId(),
                             btnDel);
 
                     obList.add(tm);
@@ -180,7 +184,7 @@ public class EmployeeDetailsFormController implements Initializable {
                 String empId = txtEmployeeId.getText();
                 try {
 
-                    boolean isDeleted = EmployeeModel.deleteEmployee(empId);
+                    boolean isDeleted = employeeBO.deleteEmployee(empId);
                     if (isDeleted) {
                         new Alert(Alert.AlertType.CONFIRMATION, "Employee Deleted Successfully").show();
                         clearFields();
@@ -232,7 +236,7 @@ public class EmployeeDetailsFormController implements Initializable {
     private void loadSchIds() {
         try {
             ObservableList<String> obList = FXCollections.observableArrayList();
-            List<String> schIDs = EmployeeModel.getSchIDs();
+            ArrayList<String> schIDs = employeeBO.getSchIDs();
 
             for (String schId : schIDs) {
                 obList.add(schId);
@@ -263,12 +267,16 @@ public class EmployeeDetailsFormController implements Initializable {
             if(btnAddEmployee.getText().equalsIgnoreCase("Add Employee")) {
 
                 try {
-                    isAdded = EmployeeModel.addEmployee(empId, empName, empAddress, empContact, empSalary, empType, empSchId);
+                    isAdded = employeeBO.addEmployee(new EmployeeDTO(
+                            empId, empName, empAddress, empContact, empSalary, empType, empSchId
+                    ));//EmployeeModel.addEmployee(empId, empName, empAddress, empContact, empSalary, empType, empSchId);
                     if (isAdded) {
                         tblEmployeeDetails.getItems().clear();
                         new Alert(Alert.AlertType.CONFIRMATION, "Employee Added").show();
                         clearFields();
                         getAllEmployeesToTable(searchText);
+                        loadEmpType();
+                        loadSchIds();
                     } else {
                         new Alert(Alert.AlertType.WARNING, "Employee Not Added Please Try Again").show();
                     }
@@ -291,14 +299,14 @@ public class EmployeeDetailsFormController implements Initializable {
 
                     if(cmbEmployeetype.getSelectionModel().isEmpty() || cmbEmployeeSchId.getSelectionModel().isEmpty()){
                         try {
-                            empType = EmployeeModel.searchByempIdEmployeeType(empId);
+                            empType = employeeBO.searchByempIdEmployeeType(empId);//EmployeeModel.searchByempIdEmployeeType(empId);
                         } catch (SQLException e) {
                             e.printStackTrace();
                         } catch (ClassNotFoundException e) {
                             e.printStackTrace();
                         }
                         try {
-                            empSchId=EmployeeModel.searchByempIdEmployeeSchId(empId);
+                            empSchId=employeeBO.searchByempIdEmployeeSchId(empId);
                         } catch (SQLException e) {
                             e.printStackTrace();
                         } catch (ClassNotFoundException e) {
@@ -312,7 +320,7 @@ public class EmployeeDetailsFormController implements Initializable {
                     boolean isUpdated;
 
                     try {
-                        isUpdated = EmployeeModel.updateEmployee(empId, empName, empAddress, empContact, empSalary,empType,empSchId);
+                        isUpdated = employeeBO.updateEmployee(new EmployeeDTO(empId, empName, empAddress, empContact, empSalary,empType,empSchId));//EmployeeModel.updateEmployee(empId, empName, empAddress, empContact, empSalary,empType,empSchId);
                         if (isUpdated) {
                             tblEmployeeDetails.getItems().clear();
                             new Alert(Alert.AlertType.CONFIRMATION, "Employee Updated").show();
@@ -348,14 +356,14 @@ public class EmployeeDetailsFormController implements Initializable {
         }else {
             String empId = txtEmployeeId.getText();
             try {
-                Employee employee = EmployeeModel.searchEmployee(empId);
-                if (employee != null) {
-                    txtEmployeeName.setText(String.valueOf(employee.getEmpName()));
-                    txtEmployeeAddress.setText(employee.getEmpAddress());
-                    txtEmployeeContact.setText(employee.getEmpContact());
-                    txtEmployeeSalary.setText(String.valueOf(employee.getEmpSalary()));
-                    cmbEmployeetype.setValue(EmployeeModel.searchByempIdEmployeeType(empId));
-                    cmbEmployeeSchId.setValue(EmployeeModel.searchByempIdEmployeeSchId(empId));
+                EmployeeDTO employeeDTO = employeeBO.searchEmployee(empId);//EmployeeModel.searchEmployee(empId);
+                if (employeeDTO != null) {
+                    txtEmployeeName.setText(String.valueOf(employeeDTO.getEmpName()));
+                    txtEmployeeAddress.setText(employeeDTO.getEmpAddress());
+                    txtEmployeeContact.setText(employeeDTO.getEmpContact());
+                    txtEmployeeSalary.setText(String.valueOf(employeeDTO.getEmpSalary()));
+                    cmbEmployeetype.setValue(employeeBO.searchByempIdEmployeeType(empId));//EmployeeModel.searchByempIdEmployeeType(empId));
+                    cmbEmployeeSchId.setValue(employeeBO.searchByempIdEmployeeSchId(empId));//EmployeeModel.searchByempIdEmployeeSchId(empId));
 
                 } else {
                     new Alert(Alert.AlertType.WARNING, "Employee Not Found Please Try Again").show();
@@ -421,7 +429,7 @@ public class EmployeeDetailsFormController implements Initializable {
                 btnSearchEmployeeOnAction(event);
                 try {
 
-                    boolean isDeleted = EmployeeModel.deleteEmployee(empId);
+                    boolean isDeleted = employeeBO.deleteEmployee(empId);
                     if (isDeleted) {
                         new Alert(Alert.AlertType.CONFIRMATION, "Employee Deleted Successfully").show();
                         clearFields();

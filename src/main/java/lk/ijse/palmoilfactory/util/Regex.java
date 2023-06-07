@@ -15,7 +15,7 @@ public class Regex {
 
     private static final String FFBINPUT_REGEX = "^(?:100|[1-9][0-9]?)?(?:\\.\\d+)?$";
 
-    private static final String EMPID_REGEX = "EMP(0{3}[1-9]|[1-9]\\d{3})$";
+    private static final String EMPID_REGEX = "EMP(0{3}[1-9]\\d*|[1-9]\\d{0,4})$";
 
     public static boolean validateUsername(String username) {
 
