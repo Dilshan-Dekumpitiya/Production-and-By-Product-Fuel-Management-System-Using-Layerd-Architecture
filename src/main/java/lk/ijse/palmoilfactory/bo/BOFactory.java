@@ -13,7 +13,7 @@ public class BOFactory {//Factory Method Design pattern --> Singleton + /Factory
 
     public enum BOTypes {
         //create object types
-        SUPPLIER,STOCK,STEAM,SCHEDULE,ORDER,OILPRODUCTION,BYPRODUCTFUEL
+        SUPPLIER,STOCK,STEAM,SCHEDULE,ORDER,OILPRODUCTION,BYPRODUCTFUEL,USER
     }
 
 
@@ -34,6 +34,8 @@ public class BOFactory {//Factory Method Design pattern --> Singleton + /Factory
                 return (T) new OilProductionBOImpl();
             case BYPRODUCTFUEL:
                 return (T) new ByProductFuelBOImpl();
+            case USER:
+                return (T) new UserBOImpl();
             /*case ORDER:
                 return (T) new OrderDAOImpl();
             case ORDER_DETAILS:

@@ -2,41 +2,25 @@ package lk.ijse.palmoilfactory.controller;
 
 import com.jfoenix.controls.JFXPasswordField;
 import com.jfoenix.controls.JFXTextField;
-import com.sun.nio.sctp.Notification;
-import javafx.animation.AnimationTimer;
-import javafx.animation.KeyFrame;
-import javafx.animation.Timeline;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
-import javafx.scene.control.PasswordField;
-import javafx.scene.control.TextField;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.VBox;
-import javafx.stage.Screen;
 import javafx.stage.Stage;
-import javafx.stage.Window;
-import javafx.util.Duration;
-import lk.ijse.palmoilfactory.model.LoginModel;
+import lk.ijse.palmoilfactory.bo.BOFactory;
+import lk.ijse.palmoilfactory.bo.custom.UserBO;
+import lk.ijse.palmoilfactory.dto.UserDTO;
 import lk.ijse.palmoilfactory.util.Regex;
-import org.controlsfx.control.NotificationPane;
 import org.controlsfx.control.Notifications;
 
 import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
 import java.util.ResourceBundle;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
 
 public class LoginFormController implements Initializable {
 
@@ -46,6 +30,8 @@ public class LoginFormController implements Initializable {
 
     @FXML
     private JFXPasswordField txtPassword;
+
+    private UserBO userBO= BOFactory.getInstance().getBO(BOFactory.BOTypes.USER);
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -66,11 +52,12 @@ public class LoginFormController implements Initializable {
 
         String username = txtUsername.getText();
         String password = txtPassword.getText();
+        String userId="";
 
         if(Regex.validateUsername(username)&&Regex.validatePassword(password)){
 
             try {
-                boolean isUserVerified = LoginModel.userCheckedInDB(username,password); //check in the DB
+                boolean isUserVerified = userBO.userCheckedInDB(new UserDTO(userId,username,password));//LoginModel.userCheckedInDB(username,password); //check in the DB
                 if (isUserVerified) {
 
                     stage.close();
