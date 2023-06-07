@@ -387,7 +387,7 @@ public class EmployeeDetailsFormController implements Initializable {
             txtEmployeeId.clear();
             new Alert(Alert.AlertType.WARNING, "No matching employee ID please Input EMP format!!!").show();
         }
-       // btnSearchEmployeeOnAction(event);
+
     }
 
     @FXML
