@@ -73,7 +73,7 @@ public class SupplierDetailsFormController implements Initializable {
 
     private String searchText="";
 
-    private SupplierBO supplierBO= BOFactory.getInstance().getBO(BOFactory.BOTypes.SUPPLIER);
+    private SupplierBO supplierBO= BOFactory.getInstance().getBO(BOFactory.BOTypes.SUPPLIER); //dynamic method dispatch --> facade
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {

@@ -6,7 +6,7 @@ import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
 public class SQLUtil {
-    //T --> Type --> boolean,result set
+    //T --> Type --> boolean,result set (Return type)
     //Object... params --> var args
     public static <T>T execute(String sql, Object... params) throws SQLException, ClassNotFoundException { //Object --> Customer details,Item details,...
         PreparedStatement statement = DBConnection.getInstance().getConnection().prepareStatement(sql);
